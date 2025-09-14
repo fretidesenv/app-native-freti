@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+</head>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container div {
+    width: 50%;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+  }
+
+  .container div h2 {
+    color:  {config?.cor_texto_primaria};
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .container div span{
+    font-size: 20px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div style=" background-color:#f4bc0b" class="color1">
+      <h2>Cor 1: #f4bc0b - rgb(244,188,11),</h2>
+      <span  style=" color:  {config?.cor_texto_primaria}">Teste preto</span>
+      <span style=" color: ${config?.cor_texto_secundaria}">Teste branco</span>
+      <span style=" color: #f4bc0b">Teste cor 1</span>
+      <span style=" color: #fbf35b">Teste cor 2</span>
+      <span style=" color: #0434cb">Teste cor 3</span>
+      <span style=" color: #dacbbc">Teste cor 4</span>
+      <span style=" color: #dacbbc">Teste cor 5</span>
+      
+
+    </div>
+    <div style=" background-color:#fbf35b">
+      <h2> Cor 2: #fbf35b - rgb(251,243,91)</h2>
+      <span style=" color:  {config?.cor_texto_primaria}">Teste preto</span>
+      <span style=" color: ${config?.cor_texto_secundaria}">Teste branco</span>
+      <span style=" color: #f4bc0b">Teste cor 1</span>
+      <span style=" color: #fbf35b">Teste cor 2</span>
+      <span style=" color: #0434cb">Teste cor 3</span>
+      <span style=" color: #bcbcbc">Teste cor 4</span>
+      <span style=" color: #dacbbc">Teste cor 5</span>
+    </div>
+    <div style=" background-color:#0434cb">
+      <h2> Cor 3: #0434cb -rgb(4,52,203)</h2>
+      <span style=" color:  {config?.cor_texto_primaria}">Teste preto</span>
+      <span style=" color: ${config?.cor_texto_secundaria}">Teste branco</span>
+      <span style=" color: #f4bc0b">Teste cor 1</span>
+      <span style=" color: #fbf35b">Teste cor 2</span>
+      <span style=" color: #0434cb">Teste cor 3</span>
+      <span style=" color: #bcbcbc">Teste cor 4</span>
+      <span style=" color: #dacbbc">Teste cor 5</span>
+    </div>
+
+    <div style=" background-color:#bcbcbc">
+      <h2> Cor 4: #bcbcbc - rgb(188,188,188)</h2>
+      <span style=" color:  {config?.cor_texto_primaria}">Teste preto</span>
+      <span style=" color: ${config?.cor_texto_secundaria}">Teste branco</span>
+      <span style=" color: #f4bc0b">Teste cor 1</span>
+      <span style=" color: #fbf35b">Teste cor 2</span>
+      <span style=" color: #0434cb">Teste cor 3</span>
+      <span style=" color: #bcbcbc">Teste cor 4</span>
+      <span style=" color: #dacbbc">Teste cor 5</span>
+    </div>
+
+    <div style="background-color:#dacbbc">
+      <h2>Cor 5: #dacbbc - rgb(218,203,188)</h2>
+      <span style=" color:  {config?.cor_texto_primaria}">Teste preto</span>
+      <span style=" color: ${config?.cor_texto_secundaria}">Teste branco</span>
+      <span style=" color: #f4bc0b">Teste cor 1</span>
+      <span style=" color: #fbf35b">Teste cor 2</span>
+      <span style=" color: #0434cb">Teste cor 3</span>
+      <span style=" color: #bcbcbc">Teste cor 4</span>
+      <span style=" color: #dacbbc">Teste cor 5</span>
+    </div>
+  </div>
+  <div>
+    <div style=" background-color:#428cfd">
+      <h2> Cor 6 (extra): #428cfd - rgb(66,140,253)</h2>
+      <span style=" color:  {config?.cor_texto_primaria}">Teste preto</span>
+      <span style=" color: ${config?.cor_texto_secundaria}">Teste branco</span>
+      <span style=" color: #f4bc0b">Teste cor 1</span>
+      <span style=" color: #fbf35b">Teste cor 2</span>
+      <span style=" color: #0434cb">Teste cor 3</span>
+      <span style=" color: #bcbcbc">Teste cor 4</span>
+      <span style=" color: #dacbbc">Teste cor 5</span>
+    </div>
+  </div>
+</body>
+
+</html>

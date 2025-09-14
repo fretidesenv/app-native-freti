@@ -1,0 +1,9 @@
+ error: ViewPropTypes will be removed from React Native. Migrate to ViewPropTypes exported from 'deprecated-react-native-prop-types'.
+solução:
+ todos os "ViewPropTypes" que estão dentro do módulo 'react-native-masked-text' e substituí-lo por:
+Antes:
+import { Platform, ViewPropTypes } from 'react-native'
+Depois:
+
+import { Platform } from 'react-native'
+import {ViewPropTypes} from 'deprecated-react-native-prop-types';

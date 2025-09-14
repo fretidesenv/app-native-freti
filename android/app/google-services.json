@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "82127319035",
+    "project_id": "app-freti",
+    "storage_bucket": "app-freti.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:82127319035:android:abea466d8da4f59178e55e",
+        "android_client_info": {
+          "package_name": "com.freti"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbYhsfaJ94HKOk9pB3SfBFNgot86J0atg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

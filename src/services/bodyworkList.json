@@ -1,0 +1,67 @@
+[
+  {
+    "key": 1,
+    "label": "Bobineira",
+    "value": "BOBINEIRA"
+  },
+  {
+    "key": 2,
+    "label": "Grade baixa",
+    "value": "GRADE BAIXA"
+  },
+  {
+    "key": 3,
+    "label": "Baú (seco)",
+    "value": "BAÚ"
+  },
+  {
+    "key": 4,
+    "label": "Baú Frigorifico",
+    "value": "BAÚ FRIGORIFICO"
+  },
+  {
+    "key": 5,
+    "label": "Graneleiro",
+    "value": "GRANELEIRO"
+  },
+  {
+    "key": 6,
+    "label": "Sider",
+    "value": "SIDER"
+  },
+  {
+    "key": 7,
+    "label": "Prancha",
+    "value": "PRANCHA"
+  },
+  {
+    "key": 8,
+    "label": "Tanque",
+    "value": "TANQUE"
+  },
+  {
+    "key": 9,
+    "label": "Caçamba",
+    "value": "CAÇAMBA"
+  },
+  {
+    "key": 10,
+    "label": "Porta Container",
+    "value": "PORTA CONTAINER"
+  },
+  {
+    "key": 11,
+    "label": "Cilo",
+    "value": "CILO"
+  },
+  {
+    "key": 12,
+    "label": "Cegonha",
+    "value": "CEGONHA"
+  },
+    {
+    "key": 13,
+    "label": "Aberto",
+    "value": "ABERTO"
+  }
+]

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "236301009407",
+    "project_id": "fortio-homologacao",
+    "storage_bucket": "fortio-homologacao.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236301009407:android:9e542e49c9353cad0ca7ca",
+        "android_client_info": {
+          "package_name": "com.fortio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "236301009407-3s9qphd49kjdgtumv17fiark9t8bkh9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fortio",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "236301009407-3hacvdn84gpcdumlns9a03r4vb9sii96.apps.googleusercontent.com",//
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBVOqu6xVvH6eXaWaTn6tkuwmcoJvcpmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "236301009407-3hacvdn84gpcdumlns9a03r4vb9sii96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,32 @@
+Comandos utilizados no cmd:
+
+npx react-native init Fortio
+cd Fortio
+adb devices
+react-native run-android
+yarn add style-components
+npm instlall --save react-native-status-bar-height
+npm install --save react-native-status-bar-height
+react-native run-android
+npm install @react-native-firebase/app
+react-native run-android
+npm install @react-native-firebase/auth
+npm install @react-native-firebase/firestore
+npm install @react-native-firebase/storage
+npm install @react-native-firebase/database
+react-native run-android
+npm install @react-native-async-storage/async-storage
+import AsyncStorage from '@react-native-async-storage/async-storage'
+react-native run-android
+npm install @react-navigation/native@^5.x
+react-native run-android
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+react-native run-android
+npm install npm install @react-navigation/stack@^5.x
+npm install @react-navigation/stack@^5.x
+react-native run-android
+npm install @react-navigation/drawer@^5.x
+react-native run-android
+npm install @react-navigation/drawer@^5.x
+react-native run-android
+doskey/history 

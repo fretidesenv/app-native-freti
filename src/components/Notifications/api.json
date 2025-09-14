@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Titulo da notificação",
+    "message": "Mensagem da notificação. ",
+    "created": 1658532666 
+  },
+  {
+    "title": "Aprovado",
+    "message": "Sua documentção foi aprovada para realizar o frete XXXXXXX. Por favor, confime o interesse em realizar esse frete na aba de 'Meus fretes'.",
+    "created": 1658532666 
+  }
+]

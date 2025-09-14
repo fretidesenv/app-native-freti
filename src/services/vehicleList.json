@@ -1,0 +1,62 @@
+[
+  {
+    "key": 1,
+    "label": "FIORINO",
+    "value": "FIORINO"
+  },
+  {
+    "key": 2,
+    "label": "TRUCK",
+    "value": "TRUCK"
+  },
+  {
+    "key": 3,
+    "label": "BI-TRUCK",
+    "value": "BI-TRUCK"
+  },
+  {
+    "key": 4,
+    "label": "CARRETA S",
+    "value": "CARRETA S"
+  },
+  {
+    "key": 5,
+    "label": "CARRETA LS",
+    "value": "CARRETA LS"
+  },
+  {
+    "key": 6,
+    "label": "TOCO",
+    "value": "TOCO"
+  },
+  {
+    "key": 7,
+    "label": "3/4",
+    "value": "3/4"
+  },
+  {
+    "key": 8,
+    "label": "VUC",
+    "value": "VUC"
+  },
+  {
+    "key": 9,
+    "label": "BITREM",
+    "value": "BITREM"
+  },
+  {
+    "key": 10,
+    "label": "RODOTREM",
+    "value": "RODOTREM"
+  },
+  {
+    "key": 11,
+    "label": "MUNK",
+    "value": "MUNK"
+  },
+  {
+    "key": 12,
+    "label": "VANDERLEIA",
+    "value": "VANDERLEIA"
+  }
+]

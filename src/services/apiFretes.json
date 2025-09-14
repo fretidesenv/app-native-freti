@@ -1,0 +1,95 @@
+[
+  {
+    "cargoWeight": 200,
+    "destinationCompany": "Empresa L",
+    "destinationCompanyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmGFNYlFbH0HWSn-d-js-NCc7eSz_iL5Sng&usqp=CAU",
+    "destinyCity": "Bento Gonçalves",
+    "destinyState": "RS",
+    "distance": 80,
+    "id": "1",
+    "observationFreight": "Camet consectetur, adipisicing elit. Explicabo, nihil deserunt quas nisi",
+    "originCity": "Veranopolis",
+    "originCompany": "Empresa A",
+    "originCompanyLogo": "https://fortio.com.br/wp-content/uploads/2021/03/cropped-WhatsApp-Image-2021-03-22-at-18.34.47-1.jpeg",
+    "originState": "RS",
+    "productName": "Soja",
+    "productType": "Grãos",
+    "registrationTime": {
+      "nanoseconds": 0,
+      "seconds": 1652213240
+    },
+    "requiredBodywork": "CAÇAMBA",
+    "requiredVehicle": "CAMINHAO",
+    "valueFreight": 1000
+  },
+  {
+    "cargoWeight": 120000,
+    "destinationCompany": "Empresa J",
+    "destinationCompanyLogo": "https://fortio.com.br/wp-content/uploads/2021/03/cropped-WhatsApp-Image-2021-03-22-at-18.34.47-1.jpeg",
+    "destinyCity": "Bento Gonçalves",
+    "destinyState": "RS",
+    "distance": 880,
+    "id": "2",
+    "observationFreight": "Lorem ipsum dolor  consectetur, adipisicing elit. Explicabo, nihil deserunt quas nisi",
+    "originCity": "Veranopolis",
+    "originCompany": "Empresa B",
+    "originCompanyLogo": "https://fortio.com.br/wp-content/uploads/2021/03/cropped-WhatsApp-Image-2021-03-22-at-18.34.47-1.jpeg",
+    "originState": "RS",
+    "productName": "Milho",
+    "productType": "Grãos",
+    "registrationTime": {
+      "nanoseconds": 0,
+      "seconds": 1652223540
+    },
+    "requiredBodywork": "GRANELEIRO",
+    "requiredVehicle": "CARRETA S",
+    "valueFreight": 25000
+  },
+  {
+    "cargoWeight": 3160.5,
+    "destinationCompany": "Empresa J",
+    "destinationCompanyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmGFNYlFbH0HWSn-d-js-NCc7eSz_iL5Sng&usqp=CAU",
+    "destinyCity": "Bento Gonçalves",
+    "destinyState": "RS",
+    "distance": 2180,
+    "id": "3",
+    "observationFreight": "Lorem sit amet consectetur, adipisicing elit. Explicabo, nihil deserunt quas nisi",
+    "originCity": "Veranopolis",
+    "originCompany": "Empresa C",
+    "originCompanyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmGFNYlFbH0HWSn-d-js-NCc7eSz_iL5Sng&usqp=CAU",
+    "originState": "RS",
+    "productName": "Refrigerante",
+    "productType": "Liquida",
+    "registrationTime": {
+      "nanoseconds": 0,
+      "seconds": 1652213540
+    },
+    "requiredBodywork": "BAÚ FRIGORIFICO",
+    "requiredVehicle": "TOCO",
+    "valueFreight": 31000
+  },
+  {
+    "cargoWeight": 16000,
+    "destinationCompany": "Empresa H",
+    "destinationCompanyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkmGFNYlFbH0HWSn-d-js-NCc7eSz_iL5Sng&usqp=CAU",
+    "destinyCity": "Cidade exemplo",
+    "destinyState": "SC",
+    "distance": 8000,
+    "id": "4",
+    "observationFreight": "Lorem  consectetur, adipisicing elit. Explicabo, nihil deserunt quas nisi",
+    "originCity": "Veranopolis",
+    "originCompany": "Empresa D",
+    "originCompanyLogo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCBAJUqou8kY_j198XbRhek9phslVh_qFfNg&usqp=CAU",
+    "originState": "RS",
+    "productName": "Agua",
+    "productType": "Liquida",
+    "registrationTime": {
+      "nanoseconds": 0,
+      "seconds": 1652113540
+    },
+    "requiredBodywork": "PRANCHA",
+    "requiredVehicle": "CARRETA S",
+    "typeBodywork": "TANQUE",
+    "valueFreight": 15000
+  }
+]

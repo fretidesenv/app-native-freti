@@ -1,0 +1,415 @@
+
+E:\react-native\Fortio\android>gradlew signingReport                 
+
+> Configure project :app
+Unable to detect AGP versions for included builds. All projects in the build should use the same AGP version. Class name for the included build object: org.gradle.composite.internal.DefaultIncludedBuild$IncludedBuildImpl_Decorated.
+
+> Configure project :react-native-firebase_app
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_app:firebase.bom using default value: 29.1.0
+:react-native-firebase_app:play.play-services-auth using default value: 20.1.0
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_app:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_app:android.compileSdk using custom value: 31
+:react-native-firebase_app:android.targetSdk using custom value: 31
+:react-native-firebase_app:android.minSdk using custom value: 21
+:react-native-firebase_app:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_auth
+:react-native-firebase_auth package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\auth\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_auth:firebase.bom using default value: 29.1.0
+:react-native-firebase_auth package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\auth\package.json
+:react-native-firebase_auth:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_auth:android.compileSdk using custom value: 31
+:react-native-firebase_auth:android.targetSdk using custom value: 31
+:react-native-firebase_auth:android.minSdk using custom value: 21
+:react-native-firebase_auth:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_database
+:react-native-firebase_database package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\database\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_database:firebase.bom using default value: 29.1.0
+:react-native-firebase_database package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\database\package.json
+:react-native-firebase_database:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_database:android.compileSdk using custom value: 31
+:react-native-firebase_database:android.targetSdk using custom value: 31
+:react-native-firebase_database:android.minSdk using custom value: 21
+:react-native-firebase_database:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_firestore
+:react-native-firebase_firestore package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\firestore\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_firestore:firebase.bom using default value: 29.1.0
+:react-native-firebase_firestore package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\firestore\package.json
+:react-native-firebase_firestore:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_firestore:android.compileSdk using custom value: 31
+:react-native-firebase_firestore:android.targetSdk using custom value: 31
+:react-native-firebase_firestore:android.minSdk using custom value: 21
+:react-native-firebase_firestore:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_storage
+:react-native-firebase_storage package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\storage\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_storage:firebase.bom using default value: 29.1.0
+:react-native-firebase_storage package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\storage\package.json
+:react-native-firebase_storage:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_storage:android.compileSdk using custom value: 31
+:react-native-firebase_storage:android.targetSdk using custom value: 31
+:react-native-firebase_storage:android.minSdk using custom value: 21
+:react-native-firebase_storage:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-reanimated
+AAR for react-native-reanimated has been found
+E:\react-native\Fortio\node_modules\react-native-reanimated\android\react-native-reanimated-68-jsc.aar
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: E:\react-native\Fortio\android\app\debug.keystore
+Alias: androiddebugkey
+MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
+SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
+SHA-256: FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C
+Valid until: terþa-feira, 30 de abril de 2052
+----------
+Variant: release
+Config: debug
+Store: E:\react-native\Fortio\android\app\debug.keystore
+Alias: androiddebugkey
+MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
+SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
+SHA-256: FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C
+Valid until: terþa-feira, 30 de abril de 2052
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: E:\react-native\Fortio\android\app\debug.keystore
+Alias: androiddebugkey
+MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
+SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
+SHA-256: FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C
+Valid until: terþa-feira, 30 de abril de 2052
+----------
+
+> Task :react-native-async-storage_async-storage:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-community_masked-view:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_app:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_auth:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_database:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_firestore:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_storage:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-gesture-handler:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-google-signin_google-signin:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-safe-area-context:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-screens:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-vector-icons:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.3.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 22s
+
+
+----------------------------------
+----------------------------------
+----------------------------------
+
+E:\react-native\Fortio>cd android && ./gradlew signingReport
+'.' não é reconhecido como um comando interno
+ou externo, um programa operável ou um arquivo em lotes.
+
+E:\react-native\Fortio\android>gradlew signingReport                 
+<-------------> 0% INITIALIZING [19s]
+
+> Configure project :app
+Unable to detect AGP versions for included builds. All projects in the build should use the same AGP version. Class name for the included build object: org.gradle.composite.internal.DefaultIncludedBuild$IncludedBuildImpl_Decorated.
+<=------------> 12% CONFIGURING [58s]
+
+> Configure project :react-native-firebase_app
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_app:firebase.bom using default value: 29.1.0
+:react-native-firebase_app:play.play-services-auth using default value: 20.1.0
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_app:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_app:android.compileSdk using custom value: 31
+:react-native-firebase_app:android.targetSdk using custom value: 31
+:react-native-firebase_app:android.minSdk using custom value: 21
+:react-native-firebase_app:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_auth
+:react-native-firebase_auth package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\auth\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_auth:firebase.bom using default value: 29.1.0
+:react-native-firebase_auth package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\auth\package.json
+:react-native-firebase_auth:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_auth:android.compileSdk using custom value: 31
+:react-native-firebase_auth:android.targetSdk using custom value: 31
+:react-native-firebase_auth:android.minSdk using custom value: 21
+:react-native-firebase_auth:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_database
+:react-native-firebase_database package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\database\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_database:firebase.bom using default value: 29.1.0
+:react-native-firebase_database package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\database\package.json
+:react-native-firebase_database:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_database:android.compileSdk using custom value: 31
+:react-native-firebase_database:android.targetSdk using custom value: 31
+:react-native-firebase_database:android.minSdk using custom value: 21
+:react-native-firebase_database:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_firestore
+:react-native-firebase_firestore package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\firestore\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_firestore:firebase.bom using default value: 29.1.0
+:react-native-firebase_firestore package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\firestore\package.json
+:react-native-firebase_firestore:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_firestore:android.compileSdk using custom value: 31
+:react-native-firebase_firestore:android.targetSdk using custom value: 31
+:react-native-firebase_firestore:android.minSdk using custom value: 21
+:react-native-firebase_firestore:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-firebase_storage
+:react-native-firebase_storage package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\storage\package.json
+:react-native-firebase_app package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\app\package.json
+:react-native-firebase_storage:firebase.bom using default value: 29.1.0
+:react-native-firebase_storage package.json found at E:\react-native\Fortio\node_modules\@react-native-firebase\storage\package.json
+:react-native-firebase_storage:version set from package.json: 14.7.0 (14,7,0 - 14007000)
+:react-native-firebase_storage:android.compileSdk using custom value: 31
+:react-native-firebase_storage:android.targetSdk using custom value: 31
+:react-native-firebase_storage:android.minSdk using custom value: 21
+:react-native-firebase_storage:reactNativeAndroidDir E:\react-native\Fortio\node_modules\react-native\android
+
+> Configure project :react-native-reanimated
+AAR for react-native-reanimated has been found
+E:\react-native\Fortio\node_modules\react-native-reanimated\android\react-native-reanimated-68-jsc.aar
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: E:\react-native\Fortio\android\app\debug.keystore
+Alias: androiddebugkey
+MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
+SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
+SHA-256: FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C
+Valid until: terþa-feira, 30 de abril de 2052
+----------
+Variant: release
+Config: release
+Store: E:\react-native\Fortio\android\app\my-upload-key.keystore
+Alias: my-key-alias
+MD5: 8A:40:3B:D5:82:09:01:33:12:68:17:B6:60:74:E9:5B
+SHA1: 31:17:85:DF:F1:9A:69:A4:D8:BC:E7:22:5A:A3:60:81:54:E9:99:36
+SHA-256: 21:45:AB:00:6A:D5:94:76:84:39:D6:D6:DF:D3:AF:9B:BB:CD:7D:58:D5:98:C9:0F:51:9B:76:D0:26:DF:EB:C4
+Valid until: segunda-feira, 23 de agosto de 2049
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: E:\react-native\Fortio\android\app\debug.keystore
+Alias: androiddebugkey
+MD5: 20:F4:61:48:B7:2D:8E:5E:5C:A2:3D:37:A4:F4:14:90
+SHA1: 5E:8F:16:06:2E:A3:CD:2C:4A:0D:54:78:76:BA:A6:F3:8C:AB:F6:25
+SHA-256: FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C
+Valid until: terþa-feira, 30 de abril de 2052
+----------
+
+> Task :react-native-async-storage_async-storage:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-community_masked-view:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_app:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_auth:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_database:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_firestore:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-firebase_storage:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-gesture-handler:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-google-signin_google-signin:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-safe-area-context:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-screens:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+> Task :react-native-vector-icons:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\gabri\.android\debug.keystore
+Alias: AndroidDebugKey
+Error: Missing keystore
+----------
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins. plugins.
+
+See https://docs.gradle.org/7.3.3/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1m 23s
+19 actionable tasks: 13 executed, 6 up-to-date
+E:\react-native\Fortio\android>
+
+
+5e:8f:16:06:2e:a3:cd:2c:4a:0d:54:78:76:ba:a6:f3:8c:ab:f6:25
+SHA-1
+
+31:17:85:df:f1:9a:69:a4:d8:bc:e7:22:5a:a3:60:81:54:e9:99:36
+SHA-1
+
