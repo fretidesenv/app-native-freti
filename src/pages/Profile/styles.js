@@ -7,12 +7,12 @@ import config from '../../config/variables.json'
 export const Container = styled.View`
   flex:1;
   align-items: center;
-  background-color: ${config?.cor_texto_secundaria};
+  background-color: ${config?.cor_neutra};
 `;
 
 export const Scroll = styled.ScrollView`
   flex:1;
-  background-color: ${config?.cor_texto_secundaria};
+  background-color: ${config?.cor_neutra};
   width: 100%;
 `;
 
@@ -37,7 +37,7 @@ font-style: italic;
 
 export const Button = styled.TouchableOpacity`
 margin-top: 16px;
-background-color: ${props => props.bg};
+background-color: ${config?.cor_secundaria};
 width: 80%;
 height: 50px;
 border-radius: 4px;
@@ -57,6 +57,7 @@ export const ButtonText = styled.Text`
   font-size: 18px;
   color: ${props => props.color};
 `;
+
 
 export const UploadButton = styled.TouchableOpacity`
  margin-top: 20%;
@@ -86,12 +87,11 @@ export const Avatar = styled.Image`
 
 export const ModalContainer = styled.KeyboardAvoidingView`
 width: 100%;
-height: 100%;
+flex: 1;
 background-color: #FFF;
-position: absolute;
-bottom: 0;
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
+padding-bottom: 80px;
 `;
 
 export const ButtonBack = styled.TouchableOpacity`
@@ -100,10 +100,11 @@ export const ButtonBack = styled.TouchableOpacity`
 `;
 
 export const ScrollProfile = styled.ScrollView`
-  margin-top: 10% ;
   margin-left: 2.5%;
   margin-right: 2.5%;
   width: 95%;
+  flex: 1;
+  padding-bottom: 100px;
 `;
 
 
@@ -168,9 +169,11 @@ export const ViewButtonUpload = styled.View`
 `;
 
 export const ButtonUpload = styled.TouchableOpacity`
-  background-color: rgb(4,52,203);
-  padding: 5%;
+  background-color: ${config?.cor_primaria};
+  padding: 1%;
   border-radius: 10px;
+  height: 50px;
+  text-size: 10px;
   width: 80%;
   align-items: center;
   justify-content: center;
@@ -194,21 +197,23 @@ export const ViewButtonEdit = styled.View`
 `;
 
 export const ButtonEdit = styled.TouchableOpacity`
-  background-color: ${config.cor_primaria} ;
-  padding: 5%;
-  border-radius: 10px;
-  width: 80%;
+  background-color: ${config.cor_secundaria} ;
+  padding: 12px 20px;
+  border-radius: 8px;
+  width: 70%;
   align-items: center;
   justify-content: center;
   flex-direction: row;
+  min-height: 48px;
 `;
 
 export const TitleButtonEdit = styled.Text`
-  color: ${config?.cor_texto_secundaria};
+  color: ${config?.cor_primaria};
   text-align: center;
   font-weight: bold;
-  font-size: 18px;
-  padding-right: 5%;
+  font-size: 16px;
+  padding-right: 8px;
+  flex: 1;
 `;
 
 export const Line = styled.View`
@@ -260,17 +265,18 @@ export const Title = styled.Text`
   color: ${config?.cor_texto_secundaria};
 `;
 
-export const ViewHeader = styled.SafeAreaView`
+export const ViewHeader = styled.View`
   width: 100%;
   background-color: ${config.cor_primaria};
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  padding-top: 15px;
   padding-left: 15px;
   padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border-bottom-width: 1px;
-  border-bottom-color: #C7C7C7; 
+  border-bottom-color: #C7C7C7;
 `;
 
 export const BtnSelectPdfImage = styled.TouchableOpacity`

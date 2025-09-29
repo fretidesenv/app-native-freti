@@ -3,7 +3,7 @@ import config from '../../config/variables.json'
 
 export const Container = styled.View`
   flex:1;
-  background-color: ${config?.cor_texto_secundaria};
+  background-color: ${config?.cor_neutra};
   justify-content: center;
   align-items: center;
   
@@ -41,8 +41,8 @@ export const ButtonGoogle = styled.TouchableOpacity`
 `;
 
 export const ViewLogo = styled.View`
-  width: 250px; /* Nova largura desejada */
-  height: 278px; /* Calculando a altura proporcional */
+  width: 450px; /* Nova largura desejada */
+  height: 248px; /* Calculando a altura proporcional */
   
   padding: 10px;
   align-items: center;
@@ -73,7 +73,7 @@ export const Label = styled.Text`
 `;
 
 export const Input = styled.TextInput`
-  background-color: ${config?.cor_texto_secundaria};
+  background-color: ${config?.cor_neutra};
   width: 80%;
   margin-top: 10px;
   border-radius: 4px;
@@ -86,15 +86,15 @@ export const Input = styled.TextInput`
 `;
 
 export const BtnLogin = styled.TouchableOpacity`
-background-color: rgba(4,52,203, 1);
-width: 80%;
-border-radius: 5px;
-justify-content: center;
-align-items: center;
-
-height: 35px;
-padding: 0 20px;
-margin-top: 5%;
+  background-color: rgba(4,52,203, 1);
+  width: 80%;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: ${config?.cor_secundaria};
+  height: 35px;
+  padding: 0 20px;
+  margin-top: 5%;
 `;
 
 export const BtnEditAction = styled.TouchableOpacity`

@@ -270,26 +270,7 @@ function MyFreightList({
     const granted = PermissionsAndroid.check(
       PERMISSIONS.ACCESS_BACKGROUND_LOCATION
     );
-
-    // console.log(granted)
-
-    // request(
-    //   PermissionsAndroid.PERMISSIONS.ACCESS_BACKGROUND_LOCATION,
-    //   {
-    //     title: "Localização",
-    //     message: "Para o App funcionar corretamente, ele precisa de acesso à localização para rastrear a carga.",
-    //     buttonNeutral: "Pergunte-me depois",
-    //     buttonNegative: "Cancelar",
-    //     buttonPositive: "OK"
-    //   },
-
-    // );
-    // if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-    //   // alert('Obrigado!');
-    //   setAccessFineLocation(true)
-    // } else {
-    //   alert('Localização de carga negada, o app pode não funcionar corretamente.');
-    // }  
+  
   }
 
   const handleCloseModalPermission = () => {
@@ -318,9 +299,6 @@ function MyFreightList({
       return error;
     }
   };
-  function onError(error) {
-    console.error(error);
-  }
 
   const handleTakeFreight = async () => {
     const fineLocation = await PermissionsAndroid.check(
@@ -464,7 +442,6 @@ function MyFreightList({
                   </Text>
                 </View>
                 <TitleDetails>LOCADOR DO FRETE:</TitleDetails>
-
                 <LineModal>
                   <Text fontWeight="medium">Empresa: </Text>
                   <Text>{data?.shipper?.name} </Text>

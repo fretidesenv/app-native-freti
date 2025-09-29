@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import Feather from "react-native-vector-icons/Feather";
@@ -37,6 +38,7 @@ function Home() {
   const [userAuthorizedFreights, setUserAuthorizedFreights] = useState(false);
   const navigation = useNavigation();
   const { user } = useContext(AuthContext);
+  const insets = useSafeAreaInsets();
   const {
     filterVehicle,
     filterBodywork,
@@ -697,7 +699,7 @@ function Home() {
   
 
   return (
-    <Container style={{ paddingBottom: 80 }}>
+    <Container style={{ paddingTop: insets.top, paddingBottom: 80 + insets.bottom }}>
       <Header namePage="Fretes disponíveis" />
 
             <Modal

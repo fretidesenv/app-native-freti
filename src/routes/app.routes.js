@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Home from "../pages/Home";
 import MyFreights from "../pages/MyFreights";
@@ -9,13 +9,13 @@ import DetailsFreight from "../components/DetailsFreight";
 import GeolocationTestScreen from "../components/GeolocationTestScreen";
 import Notifications from "../components/Notifications";
 import FreightInformEvent from "../pages/FreightInformEvent";
-import SimulatorFreigth from "../pages/simulator-freigth/simulator-freigth";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Text, LogBox } from 'react-native';
+import { LogBox } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import BenefitsScreen from "../pages/benefits/benefits";
 import ProfileStack from "../pages/Profile/ProfileStack";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
@@ -45,19 +45,6 @@ function StackRoutes() {
           },
         }}
       />
-
-      {/* <Stack.Screen
-        name="DataProfile"
-        component={DataProfile}
-        options={{
-          headerShown: false,
-          headerTintColor: config?.cor_neutra,
-
-          headerStyle: {
-            backgroundColor: config?.cor_primaria,
-          },
-        }}
-      /> */}
 
       <Stack.Screen
         name="MeusFretes"
@@ -109,7 +96,7 @@ function StackRoutes() {
             backgroundColor: config?.cor_primaria,
           },
         }}
-      />
+      /> 
 
       <Stack.Screen
         name="FreightInformEvent"
@@ -132,6 +119,8 @@ const Tab = createBottomTabNavigator();
 
 function AppRoutes() {
   const { freightsInLine, setFreightsInLine } = useContext(FilterContext);
+  const insets = useSafeAreaInsets();
+  
   return (
 
   // <NavigationContainer >
@@ -141,11 +130,12 @@ function AppRoutes() {
           headerShown: false,
           tabBarStyle: {
             position: 'absolute',
-            height: 70,
+            height: 70 + insets.bottom,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
-            backgroundColor: '#012443',
-            paddingBottom: 10,
+            backgroundColor: '#001b33',
+            paddingBottom: 10 + insets.bottom,
+            paddingTop: 10,
           },
         }}
       >
@@ -159,24 +149,25 @@ function AppRoutes() {
               <MaterialCommunityIcons
                   style={{ marginTop: -2 }}
                   name="road-variant"
-                  color={"#FFF"}
+                  color={"#ff7208"}
                   size={size}
                 />
             ),
           }}
         />
         <Tab.Screen 
-          name="Simulator" 
-          component={SimulatorFreigth} 
+          name="Main" 
+          component={StackRoutes} 
           options={{
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="currency-usd" color="#fff" size={30} />
+              // <MaterialCommunityIcons name="currency-usd" color="#fff" size={30} />
+              <Icon name="truck-cargo-container" color="#ff7208" size={30} />
             ),
           }}
         />
 
         {/* Opção central - Caminhão */}
-        <Tab.Screen 
+        {/* <Tab.Screen 
           name="Main" 
           component={StackRoutes} 
           options={{
@@ -196,15 +187,15 @@ function AppRoutes() {
               </View>
             ),
           }}
-        />
+        /> */}
 
         {/* Opções laterais direita */}
         <Tab.Screen 
-          name="Settings" 
-          component={ProfileStack} // <<< Aqui entra o Stack
+          name="Settings"  
+          component={ProfileStack}
           options={{
             tabBarIcon: ({ color, size }) => ( 
-              <Icon name="account" color="#fff" size={size} />
+              <Icon name="account" color="#ff7208" size={size} />
             ),
           }}
         />
@@ -223,97 +214,13 @@ function AppRoutes() {
           component={BenefitsScreen} 
           options={{
             tabBarIcon: ({ color, size }) => (
-              <Icon name="view-grid" color="#fff" size={size} />  
+              <Icon name="view-grid" color="#ff7208" size={size} />  
             ),
           }}
         />
       </Tab.Navigator>
     // </NavigationContainer>
 
-
-//--------------------------------------
-
-
-    // <Tab.Navigator
-    //   style={{ backgroundColor: "#0f0" }}
-    //   screenOptions={{
-    //     headerShown: false,
-    //     tabBarHideOnKeyboard: true,
-    //     tabBarShowLabel: false,
-    //     tabBarVisibilityAnimationConfig: true,
-    //     tabBarActiveTintColor: config?.cor_secundaria,
-    //     tabBarInactiveTintColor: config?.cor_primaria,
-
-    //     tabBarStyle: {
-    //       backgroundColor: config?.cor_neutra,
-    //       // borderRadius: 15,
-    //       // margin: 10,
-    //       borderTopWidth: 0,
-    //     },
-    //   }}
-    // >
-
-    //   <Tab.Screen
-    //     name="Fretes"
-    //     component={StackRoutes}
-    //     options={{
-    //       tabBarIcon: ({ color, size }) => {
-    //         return <Feather name="truck" color={color} size={size} />;
-    //       },
-    //     }}
-    //   />
-
-    //   <Tab.Screen
-    //     name="Meus Fretes"
-    //     component={MyFreights}
-    //     options={{
-    //       tabBarIcon: ({ color, size }) => {
-    //         return (
-    //           <>
-    //             {freightsInLine > 0 ? (
-    //               <Text
-    //                 style={{
-    //                   marginBottom: -7,
-    //                   marginLeft: 10,
-    //                   fontSize: 10,
-    //                   fontWeight: "bold",
-    //                 }}
-    //                 color={config?.cor_primaria}
-    //               >
-    //                 {freightsInLine}
-    //               </Text>
-    //             ) : null}
-    //             <MaterialCommunityIcons
-    //               style={{ marginTop: -2 }}
-    //               name="road-variant"
-    //               color={color}
-    //               size={size}
-    //             />
-    //           </>
-    //         );
-    //       },
-    //     }}
-    //   />
-
-    //   <Tab.Screen
-    //     name="Simulação"
-    //     component={SimulatorFreigth}
-    //     options={{
-    //       tabBarIcon: ({ color, size }) => {
-    //         return <FontAwesome name="dollar" size={24} color="#000" />
-    //       },
-    //     }} 
-    //   /> 
-
-    //   <Tab.Screen
-    //     name="Perfil"
-    //     component={Profile}
-    //     options={{
-    //       tabBarIcon: ({ color, size }) => {
-    //         return <Feather name="user" color={color} size={size} />;
-    //       },
-    //     }}
-    //   />
 
 
 

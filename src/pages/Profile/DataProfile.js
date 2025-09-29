@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import { Platform, ActivityIndicator, View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 
-
 import { useNavigation } from '@react-navigation/native';
 
 import {
   ButtonText,
   ModalContainer,
   ButtonBack,
-  TitleLabel,
   ScrollProfile,
   ButtonUpload,
   TitleButtonUpload,
@@ -16,20 +14,10 @@ import {
   ButtonEdit,
   TitleButtonEdit,
   ViewButtonEdit,
-  Line,
-  Image,
-  Required,
-  InputSearch,
-  ButtonBank,
-  SelectBank,
   Title,
   ViewHeader,
-  TextBtnSelectPdfImage,
-  BtnSelectPdfImage,
-  ViewBtnSelectPdfImage
 } from './styles'
 
-import { TextInputMask } from 'react-native-masked-text';//verificar para eliminar
 import { VerificationContext } from '../../contexts/registrationVerification';
 import { Button, Modal, VStack, HStack, Text, Radio, Center, NativeBaseProvider, Select, CheckIcon } from "native-base";
 
@@ -40,15 +28,21 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup'
 
-import { Label, Input, BankSelectedText } from "../../components/Styles";
 import { AuthContext } from '../../contexts/auth';
 
 import DateField from 'react-native-datefield';
 import { format, toDate, getDate, getYear, getMonth, } from 'date-fns';
 
-import { UploadImage } from '../../components/UploadImage';
-import { UploadPdf } from '../../components/UploadPdf';
 import firestore from '@react-native-firebase/firestore';
+
+// Importar os novos componentes de formulário
+import {
+  FormField,
+  FormSelect,
+  FormMaskField,
+  FormSection,
+  BankSelector
+} from '../../components/FormComponents';
 
 import apiCep from '../../services/apiCep';
 import apiBanks from '../../services/apiBanks';
@@ -737,26 +731,7 @@ function ModalDataProfile({
 
 
         <Label>CRLV:</Label>
-        {/*  <Controller
-          control={control}
-          name="documentCrlv"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              width="95%"
-              onChangeText={onChange}
-              //onBlur={onBlur}//desativado o numero fica sem a mascara
-              value={value}
-              placeholder="999999999"
-              keyboardType="numeric"
-              editable={permissionToEditOnResult}//alterar a permissão quando a condição muda
-              color={permissionToEditOnResult ? '#121212' : '#ddd'}//alterar a cor quano é editavel ou não
-              style={[styles.input, { color: permissionToEditOnResult ? '#121212' : '#ddd', borderColor: errors.documentCpf ? '#ff375b' : '#ddd' }]}
-
-            />
-          )}
-        />
-        {errors.documentCrlv && <Text style={styles.labelError}>{errors.documentCrlv?.message}</Text>}
-           */}
+        
 
         <ViewBtnSelectPdfImage >
 
@@ -823,26 +798,7 @@ function ModalDataProfile({
 
 
         <Label>ANTT:</Label>
-        {/* <Controller
-          control={control}
-          name="documentAntt"
-          render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              width="95%"
-              onChangeText={onChange}
-              //onBlur={onBlur}//desativado o numero fica sem a mascara
-              value={value}
-              placeholder="999999999"
-              keyboardType="numeric"
-              editable={permissionToEditOnResult}//alterar a permissão quando a condição muda
-              color={permissionToEditOnResult ? '#121212' : '#ddd'}//alterar a cor quano é editavel ou não
-              style={[styles.input, { color: permissionToEditOnResult ? '#121212' : '#ddd', borderColor: errors.documentCpf ? '#ff375b' : '#ddd' }]}
-
-            />
-          )}
-        />
-        {errors.documentAntt && <Text style={styles.labelError}>{errors.documentAntt?.message}</Text>} */}
-
+      
 
         <ViewBtnSelectPdfImage >
 
@@ -932,8 +888,6 @@ function ModalDataProfile({
             )}
           </>)}
 
-        {/* <UploadPdf edit={permissionToEditOnResult} idPdf="pdfdocumentAntt" />
- */}
 
 
         {/* /////////////////###DADOS PESSOAIS-CLOSE###///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}

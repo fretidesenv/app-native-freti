@@ -36,7 +36,7 @@ export const Avatar = styled.View`
   height: 40px;
   border-radius: 20px;
   margin-right: 6px;
-  background-color: ${config.cor_primaria};
+  background-color: ${config.cor_secundaria};
 `;
 export const AvatarImg = styled.Image`
   width: 40px;
@@ -67,7 +67,7 @@ align-items: center;
 // `;
 
 export const ButtonMore = styled.TouchableOpacity`
-background-color: ${config.cor_secundaria};
+background-color: ${config.cor_texto_secundaria};
 width: 30%;
 height: 30px;
 flex-direction: row;
@@ -77,7 +77,7 @@ border-radius: 10px;
 `;
 
 export const TextMore = styled.Text`
-  color: #FFF;
+  color: ${config.cor_primaria};
   font-weight: bold;
 `;
 

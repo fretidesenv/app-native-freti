@@ -7,12 +7,10 @@ import {
   Linking,
   ScrollView,
   KeyboardAvoidingView,
-  Platform,
 } from "react-native";
 
 import {
   Container,
-  Title,
   ButtonText,
   Logo,
   BtnTerms,
@@ -28,17 +26,13 @@ import { AuthContext } from "../../contexts/auth";
 import { TextInputMask } from "react-native-masked-text";
 import firestore from "@react-native-firebase/firestore";
 import * as Animatable from "react-native-animatable";
-
-import { Button, Modal, VStack } from "native-base";
 import { PLATAFORM_IS_IOS } from "../../handler/permissions";
-
-const TitleAnimated = Animatable.createAnimatableComponent(Title);
 
 const LogoAnimated = Animatable.createAnimatableComponent(Logo);
 
 function Login() {
-  const { signInGoogle, signIn, signUp, loadingAuth, handleResetPassword } = useContext(AuthContext);
-
+  const { signInGoogle, signIn, signUp, handleResetPassword } = useContext(AuthContext);
+ 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [errorNotAccepted, setErrorNotAccepted] = useState(false);
   const [numCpf, setNumCpf] = useState("");
@@ -47,8 +41,8 @@ function Login() {
     "https://www.fortio.com.br/termos/termos-e-condicoes-de-uso/";
   const [modalVerifyCpf, setModalVerifyCpf] = useState(false);
 
-  const [methodLogin, setMethodLogin] = useState("");
-  const [editingCpf, setEditingCpf] = useState(false);
+  const [methodLogin, setMethodLogin] = useState(""); 
+  const [editingCpf, setEditingCpf] = useState(false); 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
@@ -59,7 +53,7 @@ function Login() {
   const verifyCpf = async () => {
     const unMaskCpf = numCpfRef?.current.getRawValue();
 
-    await validateCpf(unMaskCpf)
+    await validateCpf(unMaskCpf) 
       .then((result) => {
         console.log(unMaskCpf, result);
         if (result) {
@@ -212,15 +206,16 @@ function Login() {
           style={{ flex: 1 }}
         >
           <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <Container>
+            <Container>  
               <ViewLogo>
                 {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
                 <LogoAnimated
                   animation="flipInY"
-                  source={require("../../assets/Fortio_V1.png")}
+                  source={require("../../assets/logo_freti_v4.png")} 
                 />
-              </ViewLogo>
-
+                
+              </ViewLogo> 
+              
               {editingCpf ? (
                 <>
                   <TextInputMask
@@ -373,9 +368,9 @@ function Login() {
                 {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
                 <LogoAnimated
                   animation="flipInY"
-                  source={require("../../assets/Fortio_V1.png")}
+                  source={require("../../assets/logo_freti_V1.png")} 
                 />
-              </ViewLogo>
+              </ViewLogo> 
 
               {/* <Container> */}
               {/* <Label>Nome:</Label> */}
@@ -500,7 +495,7 @@ function Login() {
                 {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
                 <LogoAnimated
                   animation="flipInY"
-                  source={require("../../assets/Fortio_V1.png")}
+                  source={require("../../assets/logo_freti_v4.png")} 
                 />
               </ViewLogo>
 

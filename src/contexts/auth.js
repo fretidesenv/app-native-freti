@@ -29,7 +29,7 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     async function loadStorage() {
-      const storageUser = await AsyncStorage.getItem("@fortio");
+      const storageUser = await AsyncStorage.getItem("@freti");
       setIdNotification((await OneSignal.getDeviceState()).userId);
       if (storageUser) {
         setUser(JSON.parse(storageUser));
@@ -501,7 +501,7 @@ function AuthProvider({ children }) {
   }
 
   async function storageUser(data) {
-    await AsyncStorage.setItem("@fortio", JSON.stringify(data));
+    await AsyncStorage.setItem("@freti", JSON.stringify(data));
   }
 
   return (

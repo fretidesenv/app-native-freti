@@ -47,9 +47,6 @@ function Login() {
   const [numCpf, setNumCpf] = useState('');
   const numCpfRef = useRef(null);
   const termOfUse = 'https://www.fortio.com.br/site/termos/termos-e-condicoes-de-uso/';
-  //   https://www.fortio.com.br/site/termos/
-  // https://www.fortio.com.br/site/termos/politica-de-privacidade/
-  // https://www.fortio.com.br/site/termos/termos-e-condicoes-de-uso/
   const [modalVerifyCpf, setModalVerifyCpf] = useState(false);
 
   const [methodLogin, setMethodLogin] = useState('');
@@ -173,7 +170,7 @@ function Login() {
               {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
               <LogoAnimated
                 animation="flipInY"
-                source={require('../../assets/Fortio_V1.png')}
+                source={require('../../assets/logo_freti_V1.png')} 
               />
             </ViewLogo>
 

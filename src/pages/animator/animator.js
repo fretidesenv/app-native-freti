@@ -79,11 +79,11 @@ const SplashScreen = () => {
       }, 1200);
     });
   }, []);
-
-  return (
+ 
+  return ( 
     <View style={styles.container}>
       <Animated.Image
-        source={require('../../assets/Fortio_V3.png')}
+        source={require('../../assets/logo_freti_v4.png')}   
         style={[
           styles.logo,
           {
@@ -94,7 +94,7 @@ const SplashScreen = () => {
         resizeMode="contain"
       />
       <Animated.Text style={[styles.text, { opacity: textOpacity }]}>
-        Sua logistica do futuro
+        Central de frete integrado  
       </Animated.Text>
     </View>
   );
@@ -103,13 +103,13 @@ const SplashScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(1,36,67)',
+    backgroundColor: '#FFF',
     alignItems: 'center',
     justifyContent: 'center',
   },
   logo: {
-    width: 160,
-    height: 160,
+    width: 450,
+    height: 248,
     marginBottom: 20,
   },
   text: {
@@ -121,71 +121,3 @@ const styles = StyleSheet.create({
 
 export default SplashScreen;
 
-
-
-
-// SplashScreen.tsx
-// import React, { useEffect, useRef } from 'react';
-// import { View, StyleSheet, Animated, Image, Dimensions } from 'react-native';
-// import { useNavigation } from '@react-navigation/native';
-
-// const SplashScreen = () => {
-//   const scaleAnim = useRef(new Animated.Value(0.5)).current;
-//   const opacityAnim = useRef(new Animated.Value(0)).current;
-//   const navigation = useNavigation();
-
-//   useEffect(() => {
-//     // Executa as animações em paralelo
-//     Animated.parallel([
-//       Animated.timing(opacityAnim, {
-//         toValue: 1,
-//         duration: 1000,
-//         useNativeDriver: true,
-//       }),
-//       Animated.spring(scaleAnim, {
-//         toValue: 1,
-//         useNativeDriver: true,
-//         friction: 4,
-//       }),
-//     ]).start(() => {
-//       // Espera 1.5 segundos e navega para Login
-//       setTimeout(() => {
-//         navigation.reset({
-//           index: 0,
-//           routes: [{ name: 'Login' }],
-//         });
-//       }, 1500);
-//     });
-//   }, []);
-
-//   return (
-//     <View style={styles.container}>
-//       <Animated.Image
-//         source={require('../../assets/Fortio_V3.png')} // substitua com o caminho da sua logo
-//         style={[
-//           styles.logo,
-//           {
-//             transform: [{ scale: scaleAnim }],
-//             opacity: opacityAnim,
-//           },
-//         ]}
-//         resizeMode="contain"
-//       />
-//     </View>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#121212',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   logo: {
-//     width: 200,
-//     height: 200,
-//   },
-// });
-
-// export default SplashScreen;

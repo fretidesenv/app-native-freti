@@ -6,7 +6,7 @@ export const Container = styled(SafeAreaView).attrs({
   edges: ["top", "left", "right"], // garante que respeite o relógio / notch
 })`
   flex: 1;
-  background-color: ${config?.cor_texto_secundaria};
+  background-color: ${config?.cor_neutra};
 `;
 
 export const Header = styled.TouchableOpacity`
@@ -131,8 +131,8 @@ export const TextButton = styled.Text`
 `;
 
 export const BtnInit = styled.TouchableOpacity`
-  background-color: rgba(4, 52, 203, 1);
-  border-color: rgba(4, 52, 203, 1);
+  background-color: ${config?.cor_secundaria};
+  border-color: ${config?.cor_secundaria};
   border-radius: 5px;
   border-width: 2px;
   display: flex;

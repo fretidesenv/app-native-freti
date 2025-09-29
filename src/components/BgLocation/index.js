@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { View, Alert, TouchableOpacity, Text, PermissionsAndroid, Platform, ScrollView, Linking } from 'react-native';
-import BackgroundService from 'react-native-background-actions';
-import Geolocation from 'react-native-geolocation-service';
-import firestore from '@react-native-firebase/firestore';
+import { Text, PermissionsAndroid, ScrollView, Linking } from 'react-native';
 import { AuthContext } from '../../contexts/auth'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'

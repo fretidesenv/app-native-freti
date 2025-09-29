@@ -1,7 +1,7 @@
 
 import { createStackNavigator } from "@react-navigation/stack";
-import Profile from ".";
-import ModalDataProfile from "./DataProfile";
+import Profile from "./index";
+import ModalDataProfile from "./DataProfileRefactored";
 
 const Stack = createStackNavigator();
 

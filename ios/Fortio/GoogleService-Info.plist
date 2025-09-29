@@ -2,24 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>631554619185-ue063082atfue4tg205fm3lqicd62e4s.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.631554619185-ue063082atfue4tg205fm3lqicd62e4s</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>631554619185-k1sqv0vl1hqt9ohnjiacq8edquulfeo6.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCK5XjUCt-RhzWrxkqfj9XHZTsQt4RNKgA</string>
+	<string>AIzaSyDs5I7rIwZ6-FjK3csYjtgL0WGDrQ19vvQ</string>
 	<key>GCM_SENDER_ID</key>
-	<string>631554619185</string>
+	<string>82127319035</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.fortio.app</string>
+	<string>com.freti.app</string>
 	<key>PROJECT_ID</key>
-	<string>app-fortio</string>
+	<string>app-freti</string>
 	<key>STORAGE_BUCKET</key>
-	<string>app-fortio.appspot.com</string>
+	<string>app-freti.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:631554619185:ios:f57a7c7790da378d25a210</string>
-	<key>DATABASE_URL</key>
-	<string>https://app-fortio-default-rtdb.firebaseio.com</string>
+	<string>1:82127319035:ios:a5adc3a11dfa7a7f78e55e</string>
 </dict>
 </plist>

@@ -73,68 +73,107 @@ const BenefitsScreen = () => {
 
     const insets = useSafeAreaInsets();
   // Função para renderizar cada item da lista
-  const renderItem = ({ item }) => (
-            <>
-
-                <Card style={styles.card} onPress={() => openPlayStore(item.url)}>
-                    <View style={styles.cardContent}>
-                        {/* Ícone pequeno ao lado do texto */}
-                        <Image source={{ uri: item.image }} style={styles.image} />
-                        <View style={styles.textContainer}>
-                          <Title style={styles.title}>{item.title}</Title>
-                          <Paragraph>{item.description}</Paragraph>
-                        </View>
-                        {/* Botão para abrir a Play Store */}
-                        <IconButton icon="open-in-new" color="#6200ea" size={20} onPress={() => openPlayStore(item.url)} />
-                    </View>
-                </Card>
-                           
-            </>
+        const renderItem = ({ item }) => (
+          <Card style={styles.card} onPress={() => openPlayStore(item.url)}>
+            <View style={styles.cardContent}>
+              <Image source={{ uri: item.image }} style={styles.image} />
+        
+              <View style={styles.textContainer}>
+                <Text style={styles.cardTitle}>{item.title}</Text>
+                <Paragraph style={styles.cardDescription}>{item.description}</Paragraph>
+              </View>
+        
+              <IconButton
+                icon="open-in-new"
+                color="#4a148c"
+                size={20}
+                onPress={() => openPlayStore(item.url)}
+              />
+            </View>
+          </Card>
         );
 
-            return (
-                <>
-                    <Header namePage="Benefícios" />
-                    <View style={{flex: 1, padding: 15, paddingBottom: insets.bottom, justifyContent: 'center' }}>
+        return (
+            <>
+              <Header namePage="Benefícios" />
 
-                        <ScrollView contentContainerStyle={{ paddingBottom: 80 }}>
-                        <Title style={styles.sectionTitle}>Benefícios disponíveis</Title>
-                          <FlatList data={benefitsData} 
-                                renderItem={renderItem} 
-                                keyExtractor={(item) => item.id} />
-                        </ScrollView>
-                    </View>  
-                </>
-            );
+                <View
+                  style={{
+                    flex: 1,
+                    padding: 16,
+                    paddingTop: insets.top + 16,
+                    paddingBottom: insets.bottom + 100,
+                    backgroundColor: "#fafafa",
+                  }}
+                >
+                  <View style={{ flex: 1 }}>
+                    {/* Cabeçalho */}
+                    <Title style={styles.sectionTitle}>Benefícios disponíveis</Title>
+                    <Paragraph style={styles.sectionSubtitle}>
+                      Desbloqueie os benefícios da Carboflix
+                    </Paragraph>
+
+                    {/* Lista */}
+                    <FlatList
+                      data={benefitsData}
+                      renderItem={renderItem}
+                      keyExtractor={(item) => item.id}
+                      contentContainerStyle={{ paddingVertical: 8, paddingBottom: 100 }}
+                    />
+                  </View>
+                </View>
+
+            </>
+        );
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      padding: 16,
-      backgroundColor: '#f5f5f5',
-    },
-    card: {
-      marginBottom: 12,
-      padding: 10,
-    },
-    cardContent: {
-      flexDirection: 'row', // Deixa a imagem, texto e botão lado a lado
-      alignItems: 'center',
-    },
-    image: {
-      width: 50, // Pequena e quadrada
-      height: 50,
-      borderRadius: 25,
-      marginRight: 25,
-    },
-    textContainer: {
-      flex: 1, // Para ocupar o espaço disponível
-    },
-    title: {
-      fontSize: 16,
-      fontWeight: 'bold',
-    },
-  });
+  sectionTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 4,
+    color: "#333",
+  },
+  sectionSubtitle: {
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 16,
+  },
+  card: {
+    marginBottom: 14,
+    borderRadius: 12,
+    elevation: 3, // sombra no Android
+    backgroundColor: "#fff",
+    shadowColor: "#000", // sombra no iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  cardContent: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 12,
+  },
+  image: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    marginRight: 16,
+  },
+  textContainer: {
+    flex: 1,
+  },
+  cardTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#222",
+    marginBottom: 2,
+  },
+  cardDescription: {
+    fontSize: 13,
+    color: "#666",
+  },
+});
+
 
 export default BenefitsScreen;

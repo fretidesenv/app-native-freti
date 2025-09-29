@@ -171,3 +171,8 @@ export const ErrorText = styled.Text`
   margin-bottom: 8;
   align-self: flex-start;
 `;
+
+export const Required = styled.Text`
+  color: #ff375b;
+  font-weight: bold;
+`;

@@ -1,4 +1,4 @@
-package com.fortio;
+package com.freti;
 
 import android.os.Bundle;
 
@@ -19,7 +19,7 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
 
-        return "Fortio";
+        return "Freti";
     }
 
     @Override

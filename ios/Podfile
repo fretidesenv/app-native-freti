@@ -57,7 +57,7 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
-target 'Fortio' do
+target 'Freti' do
 
   config = use_native_modules!
 
@@ -75,7 +75,7 @@ target 'Fortio' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'FortioTests' do
+  target 'FretiTests' do
     inherit! :complete
     # Pods for testing
   end

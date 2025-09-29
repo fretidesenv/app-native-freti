@@ -635,7 +635,7 @@ export default function DetailsFreight({ route }) {
           </View>
         </Button>
 
-        <View style={{ marginBottom: 100 }}>
+        <View style={{ marginBottom: 150 }}>
           <ButtonFixed />
         </View>
 

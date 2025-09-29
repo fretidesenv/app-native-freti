@@ -5,11 +5,13 @@ import { Container, Title, ViewNamePage, NamePage, ButtonNotifications, Notifica
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 import { useNavigation, useFocusEffect } from '@react-navigation/native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 
 
 function Header(props) {
   const [notifications, setNotifications] = useState(0)
+  const insets = useSafeAreaInsets();
 
   const navigation = useNavigation();
 
@@ -21,7 +23,7 @@ function Header(props) {
     <Container>
       <View paddingLeft={15} gap={2} flexDirection="column" width="80%">
         <Title>
-          Fortio
+          Freti
         </Title>
         <SeparatorLine />
         <ViewNamePage>

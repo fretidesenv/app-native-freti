@@ -1,11 +1,11 @@
 {
-    "cor_primaria": "rgb(1,36,67)",
+    "cor_primaria": "#001b33",
     "cor_primaria_40": "rgb(1,36,67, .4)",
-    "cor_secundaria": "rgb(255,49,0)",
-    "cor_neutra": "rgb(242,242,242)",
+    "cor_secundaria": "#ff7208",
+    "cor_neutra": "#f5f5f5",
     
-    "cor_texto_primaria": "rgb(0,0,0)",
-    "cor_texto_secundaria": "rgb(242,242,242)"
+    "cor_texto_primaria": "#001b33",
+    "cor_texto_secundaria": "#ff7208"
     
 
 }
