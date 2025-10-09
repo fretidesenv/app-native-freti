@@ -18,6 +18,10 @@ const PermissionModal = () => {
   const { height } = Dimensions.get("window");
   const { showModalPermsission, setShowModalPermsission, blockedPermissions } = useApplicationStore();
 
+  // Debug log para verificar o estado do modal
+  console.log('🔍 PermissionModal - showModalPermsission:', showModalPermsission);
+  console.log('🔍 PermissionModal - blockedPermissions:', blockedPermissions);
+
   const handleOnClose = () => {
     setShowModalPermsission(false);
   }
@@ -40,11 +44,17 @@ const PermissionModal = () => {
                   seguintes permissões:
                 </Text>
 
-                {blockedPermissions.map((perm, index) => (
-                  <Text key={index} fontWeight="bold">
-                    - {perm}
+                {blockedPermissions && blockedPermissions.length > 0 ? (
+                  blockedPermissions.map((perm, index) => (
+                    <Text key={index} fontWeight="bold">
+                      - {perm}
+                    </Text>
+                  ))
+                ) : (
+                  <Text fontWeight="bold">
+                    - Localização Precisa
                   </Text>
-                ))}
+                )}
 
 
                 <TouchableOpacity

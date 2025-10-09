@@ -2,12 +2,11 @@ import React from 'react';
 import { View, FlatList, StyleSheet, Image, Linking } from 'react-native';
 import { Card, Text, Title, Paragraph, IconButton } from 'react-native-paper';
 import Header from "../../components/Header";
-import { ScrollView } from 'native-base';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PLATAFORM_IS_IOS } from '../../handler/permissions';
 
 const urlApp = PLATAFORM_IS_IOS ? "https://apps.apple.com/br/app/carboflix/id6670285908" 
-  : "https://play.google.com/store/search?q=carboflix&c=apps";
+  : "https://play.google.com/store/apps/details?id=com.jvm.carboflix&hl=pt_BR";
 
 // Dados de exemplo para os benefícios
 const benefitsData = [
@@ -22,14 +21,14 @@ const benefitsData = [
         id: '2',
         title: 'Assistência na Estrada',
         description: 'Suporte em emergências na estrada.',
-        image: 'https://media.licdn.com/dms/image/v2/D4D0BAQGljb0zwWhNaw/company-logo_200_200/company-logo_200_200/0/1721219018333/carboflix_logo?e=1750291200&v=beta&t=b8v4DxFBtbwZDEZWCzSEKFduHeDHw5iJ0fhnQlvwyWQ',
+        image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c0/29/0c/c0290c07-72c2-fbf1-8128-85f9a50b26e8/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp',
         url: urlApp,
       },
       {
         id: '3',
         title: 'Descarbonização de Motor',
         description: 'Descarbonização de Motor em vários lugares do pais.',
-        image: 'https://media.licdn.com/dms/image/v2/D4D0BAQGljb0zwWhNaw/company-logo_200_200/company-logo_200_200/0/1721219018333/carboflix_logo?e=1750291200&v=beta&t=b8v4DxFBtbwZDEZWCzSEKFduHeDHw5iJ0fhnQlvwyWQ',
+        image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c0/29/0c/c0290c07-72c2-fbf1-8128-85f9a50b26e8/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp',
         url: urlApp,
       },
       {
@@ -43,21 +42,21 @@ const benefitsData = [
         id: '5',
         title: 'Suporte Psicológico',
         description: 'Suporte piscológico de qualquer lugar que você esteja.',
-        image: 'https://media.licdn.com/dms/image/v2/D4D0BAQGljb0zwWhNaw/company-logo_200_200/company-logo_200_200/0/1721219018333/carboflix_logo?e=1750291200&v=beta&t=b8v4DxFBtbwZDEZWCzSEKFduHeDHw5iJ0fhnQlvwyWQ',
+        image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c0/29/0c/c0290c07-72c2-fbf1-8128-85f9a50b26e8/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp',
         url: urlApp,
       },
       {
         id: '6',
         title: 'Suporte Contábil',
         description: 'Tive e gerencie sua dúvida contábil a qualquer momento.',
-        image: 'https://media.licdn.com/dms/image/v2/D4D0BAQGljb0zwWhNaw/company-logo_200_200/company-logo_200_200/0/1721219018333/carboflix_logo?e=1750291200&v=beta&t=b8v4DxFBtbwZDEZWCzSEKFduHeDHw5iJ0fhnQlvwyWQ',
+        image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c0/29/0c/c0290c07-72c2-fbf1-8128-85f9a50b26e8/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp',
         url: urlApp,
       },
       {
         id: '7',
         title: 'Vídeo Aulas',
         description: 'Encontre várias vídeos aulas para aumentar seu conhecimento.',
-        image: 'https://media.licdn.com/dms/image/v2/D4D0BAQGljb0zwWhNaw/company-logo_200_200/company-logo_200_200/0/1721219018333/carboflix_logo?e=1750291200&v=beta&t=b8v4DxFBtbwZDEZWCzSEKFduHeDHw5iJ0fhnQlvwyWQ',
+        image: 'https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c0/29/0c/c0290c07-72c2-fbf1-8128-85f9a50b26e8/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/230x0w.webp',
         url: urlApp,
       },
 ];
@@ -107,10 +106,15 @@ const BenefitsScreen = () => {
                   }}
                 >
                   <View style={{ flex: 1 }}>
+                    {/* Publicidade */}
+                    <View style={styles.cardHeader}>
+                      <Text style={styles.adLabel}>Publicidade</Text>
+                    </View>
+
                     {/* Cabeçalho */}
                     <Title style={styles.sectionTitle}>Benefícios disponíveis</Title>
                     <Paragraph style={styles.sectionSubtitle}>
-                      Desbloqueie os benefícios da Carboflix
+                      Desbloqueie os benefícios 
                     </Paragraph>
 
                     {/* Lista */}
@@ -172,6 +176,18 @@ const styles = StyleSheet.create({
   cardDescription: {
     fontSize: 13,
     color: "#666",
+  },
+  cardHeader: {
+    backgroundColor: "#f0f0f0",
+    padding: 8,
+    borderRadius: 6,
+    marginBottom: 16,
+    alignItems: "center",
+  },
+  adLabel: {
+    fontSize: 12,
+    color: "#666",
+    fontWeight: "500",
   },
 });
 

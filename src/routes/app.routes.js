@@ -164,6 +164,16 @@ function AppRoutes() {
               <Icon name="truck-cargo-container" color="#ff7208" size={30} />
             ),
           }}
+          listeners={({ navigation }) => ({
+            tabPress: (e) => {
+              // Previne o comportamento padrão
+              e.preventDefault();
+              // Navega para a aba Main e depois reseta o stack interno para Home
+              navigation.navigate('Main', {
+                screen: 'Home',
+              });
+            },
+          })}
         />
 
         {/* Opção central - Caminhão */}

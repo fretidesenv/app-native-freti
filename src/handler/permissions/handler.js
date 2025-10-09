@@ -34,9 +34,15 @@ const PermissionsHandler = {
   requestAllPermission: async (callback) => {
     let deniedPermissions = [];
 
+    console.log('🔐 Iniciando solicitação de permissões...');
+
+    
+    // Solicita todas as permissões básicas
     for (const permission of PERMISSIONS_KEYS) {
       let result = await PermissionsHandler.requestPermission(permission);
       let labelPermission = PERMISSIONS_TO_REQUEST[permission];
+
+      console.log(`📱 ${permission}: ${result} - ${labelPermission}`);
 
       if (result === RESULTS.UNAVAILABLE) {
         console.log(`⚠️ ${permission}: ${labelPermission} não está disponível neste dispositivo.`);
@@ -45,14 +51,34 @@ const PermissionsHandler = {
 
       if (result === RESULTS.DENIED || result === RESULTS.BLOCKED) {
         deniedPermissions.push(labelPermission); // Armazena apenas as permissões negadas        
+        console.log(`❌ ${permission}: ${labelPermission} foi negada/bloqueada`);
       }
     }
 
-    await PermissionsHandler.requestLocationPermissions();
+    // Solicita permissões de localização específicas
+    let locationDeniedPermissions = await PermissionsHandler.requestLocationPermissions();
+    if (locationDeniedPermissions && locationDeniedPermissions.length > 0) {
+      deniedPermissions = [...deniedPermissions, ...locationDeniedPermissions];
+      console.log('📍 Permissões de localização negadas:', locationDeniedPermissions);
+    }
+
+    // Verifica notificações no iOS
     deniedPermissions = await IOSService.checkNotification(deniedPermissions);
 
+    console.log('📋 Total de permissões negadas:', deniedPermissions.length);
+    console.log('📋 Permissões negadas:', deniedPermissions);
+
+    // Mostra o modal se houver permissões negadas
     if (deniedPermissions.length > 0) {
+      console.log('🚨 Exibindo modal de permissões...');
       setPermissionStorage(deniedPermissions, true);
+    } else {
+      console.log('✅ Todas as permissões foram concedidas');
+      // No Android, sempre mostra o modal informativo para explicar as permissões
+      if (!PLATAFORM_IS_IOS) {
+        console.log('🤖 Android - Exibindo modal informativo...');
+        setPermissionStorage([], true);
+      }
     }
 
     if (callback) {
@@ -65,7 +91,6 @@ const PermissionsHandler = {
   requestLocationPermissions: async () => {
     let permissions = [];
     let permissionsBlocked = [];
-    let isBlockedLocation = false;
 
     if (PLATAFORM_IS_IOS) {
       permissions.push(PERMISSIONS.IOS.APP_TRACKING_TRANSPARENCY);
@@ -76,20 +101,20 @@ const PermissionsHandler = {
       permissions.push(PERMISSIONS.ANDROID.ACCESS_COARSE_LOCATION);
     }
 
+    console.log('📍 Solicitando permissões de localização:', permissions);
+
     for (const permission of permissions) {
       let result = await PermissionsHandler.requestPermission(permission);
+      console.log(`📍 ${permission}: ${result}`);
 
       if (result == RESULTS.BLOCKED || result == RESULTS.DENIED) {
-        isBlockedLocation = true;
         permissionsBlocked.push(PERMISSIONS_TO_REQUEST[permission]);
+        console.log(`❌ Localização negada: ${PERMISSIONS_TO_REQUEST[permission]}`);
       }
     }
 
-    if (isBlockedLocation) {
-      setPermissionStorage(permissionsBlocked, true);
-    }
-
-    return !isBlockedLocation;
+    console.log('📍 Permissões de localização bloqueadas:', permissionsBlocked);
+    return permissionsBlocked;
   },
   activeCamera: (callback, customOptions) => {
     const CAMERA_PERMISSION = PLATAFORM_IS_IOS ? PERMISSIONS.IOS.CAMERA : PERMISSIONS.ANDROID.CAMERA;
@@ -136,7 +161,11 @@ const PermissionsHandler = {
       ...geolocationOptions
     }
 
-    if (await PermissionsHandler.requestLocationPermissions()) {
+    // Verifica se as permissões de localização foram concedidas
+    const locationDeniedPermissions = await PermissionsHandler.requestLocationPermissions();
+    const hasLocationPermission = locationDeniedPermissions.length === 0;
+
+    if (hasLocationPermission) {
       Geolocation.getCurrentPosition(
         async ({ coords, timestamp }) => {
           if (callback) {
@@ -154,6 +183,11 @@ const PermissionsHandler = {
             callback(null, null, error);
           }
         }, options);
+    } else {
+      console.log('❌ Permissões de localização não concedidas');
+      if (callback) {
+        callback(null, null, new Error('Permissões de localização não concedidas'));
+      }
     }
   }
 }

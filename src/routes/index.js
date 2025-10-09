@@ -42,9 +42,16 @@ function Routes() {
   const { signed, loading } = useContext(AuthContext);
 
   const handleShowModal = async () => {
+    console.log('🚀 handleShowModal chamado - signed:', signed);
     AsyncStorage.getItem("isPermissionsRequested").then((value) => {
+      console.log('📱 isPermissionsRequested:', value);
       if (!stringToBoolean(value)) {
+        console.log('🔄 Primeira execução - solicitando permissões...');
         AsyncStorage.setItem("isPermissionsRequested", "true");
+        PermissionsHandler.requestAllPermission();
+      } else {
+        console.log('⚠️ Permissões já foram solicitadas anteriormente');
+        // Mesmo assim, vamos verificar e mostrar o modal se necessário
         PermissionsHandler.requestAllPermission();
       }
     });

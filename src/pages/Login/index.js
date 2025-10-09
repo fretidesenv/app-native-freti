@@ -38,7 +38,7 @@ function Login() {
   const [numCpf, setNumCpf] = useState("");
   const numCpfRef = useRef(null);
   const termOfUse =
-    "https://www.fortio.com.br/termos/termos-e-condicoes-de-uso/";
+    "https://www.fortio.com.br/termos/termos-e-condicoes-de-uso-freti/";
   const [modalVerifyCpf, setModalVerifyCpf] = useState(false);
 
   const [methodLogin, setMethodLogin] = useState(""); 
