@@ -395,6 +395,7 @@ function AuthProvider({ children }) {
           permissionToEdit: userProfile?.data()?.permissionToEdit,
           lastLogin: date,
           idNotification: idNotification !== undefined ? idNotification : "",
+          groupId: userProfile?.data()?.groupId,
         };
         setUser(data);
         storageUser(data);

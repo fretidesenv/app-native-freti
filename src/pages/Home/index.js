@@ -38,6 +38,10 @@ function Home() {
   const [userAuthorizedFreights, setUserAuthorizedFreights] = useState(false);
   const navigation = useNavigation();
   const { user } = useContext(AuthContext);
+
+  console.log("user")
+  console.log(user)
+
   const insets = useSafeAreaInsets();
   const {
     filterVehicle,
@@ -176,6 +180,9 @@ function Home() {
   useFocusEffect(
     useCallback(() => {
       let isActive = true;
+
+      console.log(user.groupId)
+
       const unsubscribe = firestore()
         .collection("freight")
         .where("status.code", "==", "01")
@@ -185,11 +192,33 @@ function Home() {
           if (isActive) {
             const freigthList = [];
             snapshot.docs.forEach((u) => {
-              freigthList.push({
-                ...u.data(),
-                id: u.id,
-              });
+              
+              console.log("user.groupId " + user.groupId)
+              console.log(u.data())
+
+              let isGroup = false;
+
+              u.data().groupOrder.forEach((group) => {
+                console.log("group.idGroup " + group.idGroup)
+                console.log("user.groupId " + user.groupId)
+
+                if(group.idGroup === user.groupId && group.active){
+                  isGroup = true;
+                }
+              })
+
+              if(isGroup){
+                  console.log("ACHOU O GRUPO CORRETO")
+                  freigthList.push({
+                    ...u.data(),
+                    id: u.id,
+                  });
+
+              }else {
+                console.log("NAO ACHOU O GRUPO CORRETO")
+              }
             });
+
             setEmptyList(!!snapshot.empty);
             setFreightsMasterData(freigthList);
             setFreightsFilteredData(freigthList);
@@ -248,6 +277,9 @@ function Home() {
   // Buscar mais freights quando puxar sua lista pra cima
   async function handleRefreshFreights() {
     setLoadingRefresh(true);
+
+    console.log("handleRefreshFreightsuser.groupId")
+    console.log(user.groupId)
 
     firestore()
       .collection("freight")
@@ -382,6 +414,9 @@ function Home() {
     }
 
     if (loading) return;
+
+    console.log("getListFreights user.groupId")
+    console.log(user.groupId)
 
     firestore()
       .collection("freight")
