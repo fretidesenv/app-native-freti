@@ -9,9 +9,25 @@ import {
 } from "./tokens";
 import { useApplicationStore } from "../../store/application";
 
-const setPermissionStorage = (blockedPermissions, showModal) => {
-  useApplicationStore.getState().setBlockedPermissions(blockedPermissions);
-  useApplicationStore.getState().setShowModalPermsission(showModal);
+// const setPermissionStorage = (blockedPermissions, showModal) => {
+//   useApplicationStore.getState().setBlockedPermissions(blockedPermissions);
+//   useApplicationStore.getState().setShowModalPermsission(showModal);
+// }
+
+const setPermissionStorage = (blockedPermissions = [], showModal) => {
+  const store = useApplicationStore.getState();
+
+  // Atualiza a lista de permissões bloqueadas
+  store.setBlockedPermissions(blockedPermissions);
+
+  // Se ainda há permissões bloqueadas, mostra o modal
+  if (blockedPermissions.length > 0) {
+    store.setShowModalPermsission(true);
+  }
+  else {
+    // Se nenhuma permissão está bloqueada, fecha o modal
+    store.setShowModalPermsission(false);
+  }
 }
 
 const IOSService = {
@@ -60,7 +76,14 @@ const PermissionsHandler = {
     }
   },
   requestPermission: async (permission) => {
-    return await request(permission);
+    const currentStatus = await check(permission);
+
+    if (currentStatus === RESULTS.GRANTED) {
+      return RESULTS.GRANTED;
+    }
+
+    const result = await request(permission);
+    return result;
   },
   requestLocationPermissions: async () => {
     let permissions = [];

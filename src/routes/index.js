@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { View, ActivityIndicator, Text } from "react-native";
+import { View, ActivityIndicator, Text, AppState } from "react-native";
 
 import AuthRoutes from "./auth.routes";
 import AppRoutes from "./app.routes";
@@ -54,6 +54,17 @@ function Routes() {
     if (signed) {
       handleShowModal();
     }
+  }, [signed]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", async (state) => {
+      if (state === "active" && signed) {
+      // Usuário voltou para o app → revalida as permissões
+      await PermissionsHandler.requestAllPermission();
+      }
+    });
+
+    return () => subscription.remove();
   }, [signed]);
 
   if (loading) {
