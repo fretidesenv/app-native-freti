@@ -198,7 +198,7 @@ function Home() {
 
               let isGroup = false;
 
-              u.data().groupOrder.forEach((group) => {
+              u?.data()?.groupOrder?.forEach((group) => {
                 console.log("group.idGroup " + group.idGroup)
                 console.log("user.groupId " + user.groupId)
 
