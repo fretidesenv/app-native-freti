@@ -28,7 +28,7 @@ import firestore from "@react-native-firebase/firestore";
 import * as Animatable from "react-native-animatable";
 import { PLATAFORM_IS_IOS } from "../../handler/permissions";
 
-const LogoAnimated = Animatable.createAnimatableComponent(Logo);
+const LogoAnimated = Animatable.createAnimatableComponent(ViewLogo);
 
 function Login() {
   const { signInGoogle, signIn, signUp, handleResetPassword } = useContext(AuthContext);
@@ -38,7 +38,7 @@ function Login() {
   const [numCpf, setNumCpf] = useState("");
   const numCpfRef = useRef(null);
   const termOfUse =
-    "https://www.fortio.com.br/termos/termos-e-condicoes-de-uso-freti/";
+    "https://www.freti.com.br/termos/termos-e-condicoes-de-uso-freti/";
   const [modalVerifyCpf, setModalVerifyCpf] = useState(false);
 
   const [methodLogin, setMethodLogin] = useState(""); 
@@ -207,14 +207,12 @@ function Login() {
         >
           <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <Container>  
-              <ViewLogo>
+              <LogoAnimated  animation="flipInY">
                 {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
-                <LogoAnimated
-                  animation="flipInY"
+                <Logo                  
                   source={require("../../assets/logo_freti_v4.png")} 
                 />
-                
-              </ViewLogo> 
+              </LogoAnimated> 
               
               {editingCpf ? (
                 <>
@@ -364,13 +362,12 @@ function Login() {
         >
           <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <Container>
-              <ViewLogo>
+               <LogoAnimated  animation="flipInY">
                 {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
-                <LogoAnimated
-                  animation="flipInY"
+                <Logo                  
                   source={require("../../assets/logo_freti_V1.png")} 
                 />
-              </ViewLogo> 
+              </LogoAnimated> 
 
               {/* <Container> */}
               {/* <Label>Nome:</Label> */}
@@ -490,14 +487,13 @@ function Login() {
           style={{ flex: 1 }}
         >
           <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-            <Container>
-              <ViewLogo>
+            <Container>             
+               <LogoAnimated  animation="flipInY">
                 {/* <LogoAnimated animation="flipInY" source={require('../../assets/logo_1.png')} /> */}
-                <LogoAnimated
-                  animation="flipInY"
+                <Logo                  
                   source={require("../../assets/logo_freti_v4.png")} 
                 />
-              </ViewLogo>
+              </LogoAnimated> 
 
               {/* <Label>Contato:</Label> */}
 

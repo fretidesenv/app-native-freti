@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface FortioTests : XCTestCase
+@interface FretiTests : XCTestCase
 
 @end
 
-@implementation FortioTests
+@implementation FretiTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

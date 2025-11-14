@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "Fortio.app"
-               BlueprintName = "Fortio"
-               ReferencedContainer = "container:Fortio.xcodeproj">
+               BuildableName = "Freti.app"
+               BlueprintName = "Freti"
+               ReferencedContainer = "container:Freti.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "FortioTests.xctest"
-               BlueprintName = "FortioTests"
-               ReferencedContainer = "container:Fortio.xcodeproj">
+               BuildableName = "FretiTests.xctest"
+               BlueprintName = "FretiTests"
+               ReferencedContainer = "container:Freti.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Fortio.app"
-            BlueprintName = "Fortio"
-            ReferencedContainer = "container:Fortio.xcodeproj">
+            BuildableName = "Freti.app"
+            BlueprintName = "Freti"
+            ReferencedContainer = "container:Freti.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "Fortio.app"
-            BlueprintName = "Fortio"
-            ReferencedContainer = "container:Fortio.xcodeproj">
+            BuildableName = "Freti.app"
+            BlueprintName = "Freti"
+            ReferencedContainer = "container:Freti.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
