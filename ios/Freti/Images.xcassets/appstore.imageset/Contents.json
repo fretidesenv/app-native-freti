@@ -1,17 +1,44 @@
 {
   "images" : [
     {
-      "filename" : "appstore.png",
+      "filename" : "icon-ios-27x20@2x 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icon-ios-27x20@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "icon-ios-27x20@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "filename" : "icon-ios-27x20@2x 2.png",
+      "idiom" : "iphone",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icon-iphone-29x29@2x.png",
+      "idiom" : "iphone",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "icon-iphone-29x29@3x.png",
+      "idiom" : "iphone",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "icon-ios-27x20@2x 3.png",
+      "idiom" : "ipad",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "icon-ipad-29x29@2x.png",
+      "idiom" : "ipad",
+      "scale" : "2x"
     }
   ],
   "info" : {

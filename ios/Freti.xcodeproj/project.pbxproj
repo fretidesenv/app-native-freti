@@ -511,8 +511,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Freti/Freti.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R96N875VX8;
+				DEVELOPMENT_TEAM = R3P2WZWUXC;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Freti/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
@@ -529,6 +531,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.freti.fretes;
 				PRODUCT_NAME = Freti;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -546,8 +549,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Freti/Freti.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R96N875VX8;
+				DEVELOPMENT_TEAM = R3P2WZWUXC;
 				INFOPLIST_FILE = Freti/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.navigation";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -563,6 +568,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.freti.fretes;
 				PRODUCT_NAME = Freti;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
