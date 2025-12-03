@@ -1,7 +1,7 @@
 Comandos utilizados no cmd:
 
-npx react-native init Fortio
-cd Fortio
+npx react-native init Freti
+cd Freti
 adb devices
 react-native run-android
 yarn add style-components
