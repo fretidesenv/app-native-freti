@@ -145,7 +145,7 @@ export const UploadImageStoppingPoints = (props) => {
             canhoto: image,
             dateConcluded: new Date(),
             concluded: true,
-            verify: false, //visando motoristas internos definidos dessa forma, caso abra para motoristas externos pensar em alteração disso
+            verify: true, 
           })
           .then(async () => {
             props.getStoppingPoints();

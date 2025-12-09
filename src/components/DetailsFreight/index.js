@@ -35,6 +35,7 @@ import BackgroundService from "react-native-background-actions";
 import * as Animatable from "react-native-animatable";
 import StoppingPoints from "../StoppingPoints";
 import { PermissionsHandler } from "../../handler/permissions";
+import { useApplicationStore } from "../../store/application";
 
 export default function DetailsFreight({ route }) {
   const AnimatedView = Animatable.createAnimatableComponent(View);
@@ -233,24 +234,34 @@ export default function DetailsFreight({ route }) {
     return R * c; // Retorna distância em km
   }
 
-  async function checkLocationPermissionAndGPS() {
-
-  }
 
   async function handleStartFreight() {
-    PermissionsHandler.getGeoLocation((coords, timestamp, error) => {
-      if (error) {
-        setLoadingStartFreight(false);
-      } else {
-        setLoadingStartFreight(false);
-        setShowModalStage(true);
-      }
-    }, {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 10000,
-      showLocationDialog: false
-    });
+    // Verifica se há permissões de localização bloqueadas
+    const locationDeniedPermissions = await PermissionsHandler.checkLocationPermissions();
+    
+    if (locationDeniedPermissions && locationDeniedPermissions.length > 0) {
+      // Há permissões bloqueadas - exibe o modal de permissões
+      console.log('🚨 Permissões de localização bloqueadas:', locationDeniedPermissions);
+      setLoadingStartFreight(false);
+      useApplicationStore.getState().setBlockedPermissions(locationDeniedPermissions);
+      useApplicationStore.getState().setShowModalPermsission(true);
+    } else {
+      // Todas as permissões estão OK - continua com o fluxo normal
+      console.log('✅ Permissões de localização OK, obtendo localização...');
+      PermissionsHandler.getGeoLocation((coords, timestamp, error) => {
+        if (error) {
+          setLoadingStartFreight(false);
+        } else {
+          setLoadingStartFreight(false);
+          setShowModalStage(true);
+        }
+      }, {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 10000,
+        showLocationDialog: false
+      });
+    }
   }
 
   const ButtonFixed = () => {

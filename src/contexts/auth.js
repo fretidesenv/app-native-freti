@@ -405,7 +405,7 @@ function AuthProvider({ children }) {
         return () => {};
       })
       .catch((error) => {
-        console.log(error);
+        console.log('Erro no login:', error.code, error.message);
         switch (error.code) {
           case 'auth/invalid-email':
             alert('Endereço de email inválido.');
@@ -414,13 +414,17 @@ function AuthProvider({ children }) {
             alert('Este usuário foi desativado.');
             break;
           case 'auth/user-not-found':
-            alert('Usuário não encontrado.');
+            alert('Usuário não encontrado. Verifique se o email está correto ou crie uma conta.');
             break;
           case 'auth/wrong-password':
             alert('Senha incorreta.');
             break;
+          case 'auth/invalid-credential':
+          case 'auth/invalid-login':
+            alert('Credenciais inválidas. Verifique se o email e senha estão corretos. Se você é um novo usuário, crie uma conta primeiro.');
+            break;
           default:
-            alert('Ocorreu um erro ao tentar fazer login.');
+            alert('Ocorreu um erro ao tentar fazer login: ' + (error.message || error.code));
         }
         setLoadingAuth(false);
       });
@@ -501,6 +505,150 @@ function AuthProvider({ children }) {
     });
   }
 
+  // Função para revogar credenciais do Google
+  async function revokeGoogleCredentials() {
+    try {
+      const currentUser = auth().currentUser;
+      if (!currentUser) {
+        throw new Error('Nenhum usuário autenticado');
+      }
+
+      // Verifica se o usuário tem login com Google
+      const providers = currentUser.providerData;
+      const hasGoogleProvider = providers.some(provider => provider.providerId === 'google.com');
+
+      if (!hasGoogleProvider) {
+        alert('Você não possui credenciais do Google vinculadas à sua conta.');
+        return;
+      }
+
+      // Verifica se há outros provedores além do Google
+      const remainingProviders = providers.filter(p => p.providerId !== 'google.com');
+      
+      if (remainingProviders.length === 0) {
+        alert('Não é possível revogar o Google pois é o único método de autenticação. Para remover completamente, você precisará deletar sua conta. Você ainda pode desativar o acesso nas configurações da sua conta do Google.');
+        return;
+      }
+
+      // Desconecta do Google Sign-In
+      try {
+        await GoogleSignin.revokeAccess();
+        await GoogleSignin.signOut();
+      } catch (googleError) {
+        console.log('Erro ao revogar acesso do Google Sign-In (pode ser ignorado):', googleError);
+      }
+
+      // Remove dados do Google do Firestore
+      const uid = currentUser.uid;
+      const userDoc = await firestore()
+        .collection("drivers_users")
+        .doc(uid)
+        .get();
+      
+      if (userDoc.exists) {
+        const userData = userDoc.data();
+        if (userData.google) {
+          const { google, ...dataWithoutGoogle } = userData;
+          await firestore()
+            .collection("drivers_users")
+            .doc(uid)
+            .set(dataWithoutGoogle, { merge: false });
+        }
+      }
+
+      // Tenta desvincular o provedor Google do Firebase Auth (se houver outros provedores)
+      try {
+        const googleProvider = providers.find(p => p.providerId === 'google.com');
+        if (googleProvider) {
+          // Nota: unlink() só funciona se houver múltiplos provedores
+          // Se der erro, significa que o Google é o único provedor
+          await currentUser.unlink('google.com');
+        }
+      } catch (unlinkError) {
+        console.log('Não foi possível desvincular o Google do Firebase Auth (pode ser o único provedor):', unlinkError);
+      }
+
+      alert('Credenciais do Google revogadas com sucesso! Os dados do Google foram removidos do aplicativo. Você ainda pode fazer login usando email e senha.');
+    } catch (error) {
+      console.error('Erro ao revogar credenciais do Google:', error);
+      alert('Erro ao revogar credenciais do Google: ' + error.message);
+    }
+  }
+
+  // Função para deletar a conta do usuário
+  async function deleteAccount() {
+    try {
+      const currentUser = auth().currentUser;
+      if (!currentUser) {
+        throw new Error('Nenhum usuário autenticado');
+      }
+
+      // const uid = currentUser.uid;
+
+      // Deleta todas as subcoleções e documentos relacionados
+      // 1. Deleta documentos da subcoleção "documents"
+      // const documentsRef = firestore()
+      //   .collection("drivers_users")
+      //   .doc(uid)
+      //   .collection("documents");
+      
+      // const documentsSnapshot = await documentsRef.get();
+      // const deleteDocumentsPromises = documentsSnapshot.docs.map(doc => doc.ref.delete());
+      // await Promise.all(deleteDocumentsPromises);
+
+      // // 2. Deleta documentos da subcoleção "myFreightsList"
+      // const myFreightsRef = firestore()
+      //   .collection("drivers_users")
+      //   .doc(uid)
+      //   .collection("myFreightsList");
+      
+      // const myFreightsSnapshot = await myFreightsRef.get();
+      // const deleteFreightsPromises = myFreightsSnapshot.docs.map(doc => doc.ref.delete());
+      // await Promise.all(deleteFreightsPromises);
+
+      // // 3. Deleta o documento principal do usuário
+      // await firestore()
+      //   .collection("drivers_users")
+      //   .doc(uid)
+      //   .delete();
+
+      // 4. Se o usuário fez login com Google, revoga o acesso
+      const providers = currentUser.providerData;
+      const hasGoogleProvider = providers.some(provider => provider.providerId === 'google.com');
+      
+      if (hasGoogleProvider) {
+        try {
+          await GoogleSignin.revokeAccess();
+          await GoogleSignin.signOut();
+        } catch (googleError) {
+          console.log('Erro ao revogar acesso do Google (pode ser ignorado):', googleError);
+        }
+      }
+
+      // 5. Deleta a conta do Firebase Auth
+      await currentUser.delete();
+
+      // 6. Limpa o AsyncStorage
+      await AsyncStorage.clear();
+
+      // 7. Limpa o estado do usuário
+      setUser(null);
+
+      alert('Conta deletada com sucesso!');
+    } catch (error) {
+      console.error('Erro ao deletar conta:', error);
+      
+      // Tratamento de erros específicos
+      if (error.code === 'auth/requires-recent-login') {
+        alert('Por segurança, você precisa fazer login novamente antes de deletar sua conta. Faça logout e login novamente, depois tente deletar a conta.');
+      } else {
+        alert('Erro ao deletar conta: ' + error.message);
+      }
+      
+      throw error;
+    }
+  }
+
   async function storageUser(data) {
     await AsyncStorage.setItem("@freti", JSON.stringify(data));
   }
@@ -513,6 +661,8 @@ function AuthProvider({ children }) {
         signUp,
         signInGoogle,
         signOut,
+        deleteAccount,
+        revokeGoogleCredentials,
         loadingAuth,
         loading,
         user,

@@ -27,7 +27,12 @@ function Progress() {
   const navigation = useNavigation();
 
   useEffect(() => {
-    const subscriber = firestore()
+    // Listeners para os fretes individuais
+    const freightListeners = {};
+    const statusListeners = {};
+    
+    // Listener para a lista de fretes do usuário
+    const subscriberList = firestore()
       .collection(`drivers_users/${user.uid}/myFreightsList`)
       .onSnapshot((snapshot) => {
         const listFreights = [];
@@ -39,41 +44,126 @@ function Progress() {
         });
 
         setFreights(listFreights);
-        async function buscaFretes() {
-          let myFreights = [];
-          for (let i = 0; i < listFreights.length; i++) {
-            let registrationInLineTime = listFreights[i].registrationInLineTime;
-            let frete = await firestore()
-              .collection("freight")
-              .doc(listFreights[i].id)
-              .get();
-            let id = listFreights[i].id;
-            myFreights = [
-              ...myFreights,
-              { ...frete.data(), registrationInLineTime, id },
-            ];
-          }
-          setMyfreights(myFreights);
-        }
 
-        async function current() {
-          firestore()
-            .collection(`drivers_users`)
-            .doc(user.uid)
-            .collection("freights")
-            .doc("current")
-            .onSnapshot((documentSnapshot) => {
-              if (documentSnapshot.data()?.id) {
-                setCurrentFreight(documentSnapshot.data()?.id);
+        // Remove listeners de fretes que não estão mais na lista
+        const currentIds = listFreights.map(f => f.id);
+        Object.keys(freightListeners).forEach(freightId => {
+          if (!currentIds.includes(freightId)) {
+            freightListeners[freightId]();
+            delete freightListeners[freightId];
+          }
+        });
+        
+        // Remove listeners de status que não estão mais na lista
+        Object.keys(statusListeners).forEach(freightId => {
+          if (!currentIds.includes(freightId)) {
+            statusListeners[freightId]();
+            delete statusListeners[freightId];
+          }
+        });
+
+        // Cria/atualiza listeners para cada frete em tempo real
+        listFreights.forEach((listFreight) => {
+          const freightId = listFreight.id;
+          const registrationInLineTime = listFreight.registrationInLineTime;
+          
+          // Verifica se já está finalizado na lista do motorista
+          if (listFreight?.status === "finished") {
+            // Remove da lista se já estiver finalizado
+            setMyfreights((prevMyFreights) => 
+              prevMyFreights.filter((f) => f.id !== freightId)
+            );
+            return;
+          }
+
+          // Se já existe listener para este frete, não cria outro
+          if (freightListeners[freightId]) {
+            return;
+          }
+
+          // Listener para monitorar mudanças de status na lista do motorista
+          if (!statusListeners[freightId]) {
+            const statusUnsubscribe = firestore()
+              .collection(`drivers_users`)
+              .doc(user.uid)
+              .collection("myFreightsList")
+              .doc(freightId)
+              .onSnapshot((doc) => {
+                if (doc.exists) {
+                  const freightStatus = doc.data()?.status;
+                  // Se o status mudou para "finished", remove da lista
+                  if (freightStatus === "finished") {
+                    setMyfreights((prevMyFreights) => 
+                      prevMyFreights.filter((f) => f.id !== freightId)
+                    );
+                  }
+                }
+              });
+            statusListeners[freightId] = statusUnsubscribe;
+          }
+
+          // Cria listener para este frete específico
+          const unsubscribe = firestore()
+            .collection("freight")
+            .doc(freightId)
+            .onSnapshot((freightSnapshot) => {
+              if (freightSnapshot.exists) {
+                const freightData = freightSnapshot.data();
+                const isFinished = freightData?.status?.code === "07";
+                
+                setMyfreights((prevMyFreights) => {
+                  // Remove o frete antigo se existir
+                  const filtered = prevMyFreights.filter(
+                    (f) => f.id !== freightId
+                  );
+                  
+                  // Só adiciona se NÃO estiver finalizado (aba "Agora" não mostra finalizados)
+                  if (!isFinished) {
+                    return [
+                      ...filtered,
+                      {
+                        ...freightData,
+                        registrationInLineTime,
+                        id: freightId,
+                      },
+                    ];
+                  }
+                  
+                  // Se estiver finalizado, remove da lista (apenas retorna o filtrado)
+                  return filtered;
+                });
               }
             });
-        }
 
-        buscaFretes();
-        current();
+          freightListeners[freightId] = unsubscribe;
+        });
       });
 
-    return () => subscriber();
+    // Listener para o frete atual
+    const subscriberCurrent = firestore()
+      .collection(`drivers_users`)
+      .doc(user.uid)
+      .collection("freights")
+      .doc("current")
+      .onSnapshot((documentSnapshot) => {
+        if (documentSnapshot.data()?.id) {
+          setCurrentFreight(documentSnapshot.data()?.id);
+        }
+      });
+
+    // Cleanup: remove todos os listeners quando o componente é desmontado
+    return () => {
+      subscriberList();
+      subscriberCurrent();
+      // Remove todos os listeners de fretes individuais
+      Object.values(freightListeners).forEach((unsubscribe) => {
+        unsubscribe();
+      });
+      // Remove todos os listeners de status
+      Object.values(statusListeners).forEach((unsubscribe) => {
+        unsubscribe();
+      });
+    };
   }, []);
   
 
@@ -140,17 +230,12 @@ function Progress() {
                 <Text style={styles.title}>Acompanhe seus fretes</Text>
                 <Text style={styles.message}>
                   Aqui você pode visualizar todos os seus fretes em tempo real, 
-                  incluindo os que estão na fila, em andamento e finalizados.
+                  incluindo os que estão na fila e em andamento.
                 </Text>
               </Card.Content>
             </Card>
           </View>
-          {/* <ViewMessage>
-            <TextMessage>
-              Aqui serão listados todos os seus fretes, em todos os status: Na
-              fila, Em andamento, Finalizado...
-            </TextMessage>
-          </ViewMessage> */}
+
         </>
       ) : (
         <List

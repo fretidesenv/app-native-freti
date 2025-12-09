@@ -137,12 +137,14 @@ function MyFreightList({
       .catch((error) => console.log(error));
   }
 
-  function viewLine() {
-    let id = data.id;
-    const subscriber = firestore()
-      .collection(`freight/${id}/queue`)
-      // .collection(`freight_teste/${id}/queue`) __temp_
+  useEffect(() => {
+    if (!data?.id) return;
 
+    let id = data.id;
+    
+    // Listener para a fila do frete
+    const subscriberQueue = firestore()
+      .collection(`freight/${id}/queue`)
       .onSnapshot((querySnapshot) => {
         const users = [];
 
@@ -153,18 +155,43 @@ function MyFreightList({
           });
         });
 
-        //console.log(users.length);
         let verify = [users.find((item) => item.key == user.uid)];
         if (verify[0]?.key === user.uid) {
           setImLine(true);
           setResultStatusFreightDriver(verify[0]?.status);
-        } else setImLine(false);
+        } else {
+          setImLine(false);
+        }
         setRowDrivers(users.length);
       });
 
-    // Unsubscribe from events when no longer in use
-    return () => subscriber();
-  }
+    // Listener para o status do frete na lista do usuário (em tempo real)
+    const subscriberStatus = firestore()
+      .collection(`drivers_users`)
+      .doc(user.uid)
+      .collection("myFreightsList")
+      .doc(id)
+      .onSnapshot((documentSnapshot) => {
+        if (documentSnapshot.exists) {
+          const freightData = documentSnapshot.data();
+          setStatusFreight(freightData?.status || "");
+          
+          // Atualiza o status também quando houver mudanças
+          if (freightData?.status) {
+            // Se o status mudar para "approved" e ainda não tiver sido contratado, pode permitir ação
+            // O listener já atualiza automaticamente, então não precisa chamar takeATrip aqui
+          }
+        }
+      }, (error) => {
+        console.log("Erro ao escutar status do frete:", error);
+      });
+
+    // Cleanup: remove os listeners quando o componente é desmontado ou data.id muda
+    return () => {
+      subscriberQueue();
+      subscriberStatus();
+    };
+  }, [data?.id, user?.uid]);
 
   const takeATrip = async (status) => {
     if (status === "approved") {
@@ -258,7 +285,7 @@ function MyFreightList({
           freights[currentFreight]?.status === "delivered" ||
           freights[currentFreight]?.status === "finished"
           ? navigationDatails(data.id)
-          : setModalDetails(true) & viewLine(data.id);
+          : setModalDetails(true);
       } catch (error) {
         alert(error);
       }
@@ -278,27 +305,6 @@ function MyFreightList({
   };
 
   const [statusFreight, setStatusFreight] = useState("");
-  const verifyStatus = async () => {
-    let _statusFreight = "";
-    try {
-      console.log(`drivers_users/${user.uid}/myFreightsList/${data.id}`);
-      await firestore()
-        .collection(`drivers_users`)
-        .doc(user.uid)
-        .collection("myFreightsList")
-        .doc(data.id)
-        .get()
-        .then((doc) => {
-          setStatusFreight(doc.data().status);
-
-          takeATrip(doc.data().status);
-        });
-
-      return _statusFreight;
-    } catch (error) {
-      return error;
-    }
-  };
 
   const handleTakeFreight = async () => {
     const fineLocation = await PermissionsAndroid.check(
@@ -312,8 +318,32 @@ function MyFreightList({
       setModalPermissionsVisible(true);
       setModalDetails(false);
     } else {
-      //console.log('pega frete')
-      verifyStatus().then(() => { });
+      // Usa o status atual que já está sendo atualizado em tempo real pelo listener
+      // Se o status for "approved", permite contratar
+      if (statusFreight === "approved") {
+        takeATrip(statusFreight);
+      } else {
+        // Se não tiver status ainda, busca uma vez para verificar
+        firestore()
+          .collection(`drivers_users`)
+          .doc(user.uid)
+          .collection("myFreightsList")
+          .doc(data.id)
+          .get()
+          .then((doc) => {
+            if (doc.exists) {
+              const currentStatus = doc.data().status;
+              setStatusFreight(currentStatus);
+              takeATrip(currentStatus);
+            } else {
+              alert('Frete não encontrado na sua lista.');
+            }
+          })
+          .catch((error) => {
+            console.log("Erro ao verificar status:", error);
+            alert('Erro ao verificar status do frete. Tente novamente.');
+          });
+      }
     }
   };
 

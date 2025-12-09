@@ -205,16 +205,16 @@ function Home() {
                 if(group.idGroup === user.groupId && group.active){
                   isGroup = true;
                 }
-              })
+              }) 
 
               if(isGroup){
                   console.log("ACHOU O GRUPO CORRETO")
                   freigthList.push({
                     ...u.data(),
                     id: u.id,
-                  });
+                  }); 
 
-              }else {
+              }else { 
                 console.log("NAO ACHOU O GRUPO CORRETO")
               }
             });

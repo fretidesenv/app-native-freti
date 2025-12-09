@@ -30,9 +30,12 @@ const PermissionModal = () => {
     Linking.openSettings();
   }
 
+  // Só exibe o modal se realmente houver permissões bloqueadas
+  const shouldShowModal = showModalPermsission && blockedPermissions && blockedPermissions.length > 0;
+
   return (
     <>
-      <Modal isOpen={showModalPermsission} onClose={handleOnClose} size="lg">
+      <Modal isOpen={shouldShowModal} onClose={handleOnClose} size="lg">
         <Modal.Content>
           <Modal.CloseButton />
           <Modal.Header>Permissões Necessárias</Modal.Header>
@@ -44,16 +47,12 @@ const PermissionModal = () => {
                   seguintes permissões:
                 </Text>
 
-                {blockedPermissions && blockedPermissions.length > 0 ? (
+                {blockedPermissions && blockedPermissions.length > 0 && (
                   blockedPermissions.map((perm, index) => (
                     <Text key={index} fontWeight="bold">
                       - {perm}
                     </Text>
                   ))
-                ) : (
-                  <Text fontWeight="bold">
-                    - Localização Precisa
-                  </Text>
                 )}
 
 

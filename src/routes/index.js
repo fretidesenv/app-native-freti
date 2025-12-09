@@ -11,6 +11,7 @@ import config from "../config/variables.json";
 import { PermissionsHandler } from "../handler/permissions";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { stringToBoolean } from "../utils/validation";
+import { useApplicationStore } from "../store/application";
 
 //OneSignal Init Code
 // OneSignal.setLogLevel(6, 0);
@@ -43,18 +44,30 @@ function Routes() {
 
   const handleShowModal = async () => {
     console.log('🚀 handleShowModal chamado - signed:', signed);
-    AsyncStorage.getItem("isPermissionsRequested").then((value) => {
-      console.log('📱 isPermissionsRequested:', value);
-      if (!stringToBoolean(value)) {
-        console.log('🔄 Primeira execução - solicitando permissões...');
-        AsyncStorage.setItem("isPermissionsRequested", "true");
-        PermissionsHandler.requestAllPermission();
-      } else {
-        console.log('⚠️ Permissões já foram solicitadas anteriormente');
-        // Mesmo assim, vamos verificar e mostrar o modal se necessário
-        PermissionsHandler.requestAllPermission();
-      }
-    });
+    
+    // Primeiro verifica se há permissões bloqueadas (sem solicitar)
+    const deniedPermissions = await PermissionsHandler.checkAllPermissions();
+    
+    if (deniedPermissions && deniedPermissions.length > 0) {
+      console.log('🚨 Há permissões bloqueadas, exibindo modal...');
+      // Mostra o modal com as permissões bloqueadas
+      useApplicationStore.getState().setBlockedPermissions(deniedPermissions);
+      useApplicationStore.getState().setShowModalPermsission(true);
+    } else {
+      console.log('✅ Todas as permissões estão concedidas, não exibindo modal');
+      // Não exibe o modal se todas as permissões estão OK
+      useApplicationStore.getState().setBlockedPermissions([]);
+      useApplicationStore.getState().setShowModalPermsission(false);
+      
+      // Apenas solicita permissões na primeira execução
+      AsyncStorage.getItem("isPermissionsRequested").then((value) => {
+        if (!stringToBoolean(value)) {
+          console.log('🔄 Primeira execução - solicitando permissões...');
+          AsyncStorage.setItem("isPermissionsRequested", "true");
+          PermissionsHandler.requestAllPermission();
+        }
+      });
+    }
   }
 
   useEffect(() => {

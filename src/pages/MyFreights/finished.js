@@ -52,11 +52,14 @@ function Finished() {
   //.where('age', '>=', 18)
 
   useEffect(() => {
-    firestore()
+    if (!user?.uid) return;
+
+    // Listener em tempo real para fretes finalizados
+    const subscriber = firestore()
       .collection('freight')
-      .where('freight.getDriverFreight.uidDriver', '==', user?.uid)
+      .where('freight.getDriverFreight.uidDriver', '==', user.uid)
       .where('status.code', '==', "07")
-      .get().then(async (snapshot) => {
+      .onSnapshot((snapshot) => {
         const myFreights = [];
         snapshot.forEach(doc => {
           myFreights.push({
@@ -65,12 +68,13 @@ function Finished() {
           })
         })
         setMyfreights(myFreights)
-        console.log(myFreights)
-      })
+        console.log('Fretes finalizados atualizados:', myFreights.length)
+      }, (error) => {
+        console.log("Erro ao buscar fretes finalizados:", error);
+      });
 
-
-
-  }, [])
+    return () => subscriber();
+  }, [user?.uid])
 
 
   const insets = useSafeAreaInsets();

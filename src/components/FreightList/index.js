@@ -41,7 +41,8 @@ import { FilterContext } from "../../contexts/filter";
 import { VerificationContext } from "../../contexts/registrationVerification";
 import config from "../../config/variables.json";
 import { Mask } from "./formater";
-import { PermissionHandler, PLATAFORM_IS_IOS } from "../../handler/permissions";
+import { PermissionsHandler } from "../../handler/permissions";
+import { useApplicationStore } from "../../store/application";
 
 function FreightList({ data, userId, userAuthorizedFreights }) {
   const { user } = useContext(AuthContext);
@@ -71,8 +72,6 @@ function FreightList({ data, userId, userAuthorizedFreights }) {
     data?.clientDelivery?.timeDelivery?.dateDelivery
   );
 
-  const [showPermissionHandler, setShowPermissionHandler] = useState(false);
-  const [permissionType, setPermissionType] = useState("");
 
   const { freightsInLine, setFreightsInLine } = useContext(FilterContext);
 
@@ -187,8 +186,17 @@ function FreightList({ data, userId, userAuthorizedFreights }) {
 
 
   async function handleGetFreight() {
-    const isAllowedLocation = PermissionHandler.requestLocationPermissions();
-    if (isAllowedLocation) {
+    // Verifica se há permissões de localização bloqueadas
+    const locationDeniedPermissions = await PermissionsHandler.checkLocationPermissions();
+    
+    if (locationDeniedPermissions && locationDeniedPermissions.length > 0) {
+      // Há permissões bloqueadas - exibe o modal de permissões
+      console.log('🚨 Permissões de localização bloqueadas:', locationDeniedPermissions);
+      useApplicationStore.getState().setBlockedPermissions(locationDeniedPermissions);
+      useApplicationStore.getState().setShowModalPermsission(true);
+    } else {
+      // Todas as permissões estão OK - continua com o fluxo normal
+      console.log('✅ Permissões de localização OK, exibindo modal de pegar frete');
       setShowModalGetFreight(true);
     }
   }
@@ -742,17 +750,6 @@ function FreightList({ data, userId, userAuthorizedFreights }) {
         </Modal.Content>
       </Modal>
 
-      {showPermissionHandler && (
-        <PermissionHandler
-          isVisible={showPermissionHandler}
-          onClose={() => setShowPermissionHandler(false)}
-          onAccept={() => {
-            setShowPermissionHandler(false);
-            Linking.openSettings();
-          }}
-          permissions={[permissionType === "location" ? "Permissão de Localização Necessária" : "GPS Desativado"]}
-        />
-      )}
     </Container>
   );
 }
