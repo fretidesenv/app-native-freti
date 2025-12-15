@@ -7,6 +7,7 @@ import firebase from "@react-native-firebase/app";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { PermissionsHandler } from "../handler/permissions";
 
 let clientID =
   GOOGLE_KEY;
@@ -26,6 +27,23 @@ function AuthProvider({ children }) {
 
   const [loadingAuth, setLoadingAuth] = useState(false);
   const [idNotification, setIdNotification] = useState("");
+
+  // Função para solicitar permissões após login bem-sucedido
+  async function requestPermissionsAfterLogin() {
+    try {
+      console.log('🔐 Solicitando permissões após login...');
+      // Solicita todas as permissões necessárias, com foco em localização
+      await PermissionsHandler.requestAllPermission((deniedPermissions) => {
+        if (deniedPermissions.length > 0) {
+          console.log('⚠️ Algumas permissões foram negadas:', deniedPermissions);
+        } else {
+          console.log('✅ Todas as permissões foram concedidas');
+        }
+      });
+    } catch (error) {
+      console.error('Erro ao solicitar permissões após login:', error);
+    }
+  }
 
   useEffect(() => {
     async function loadStorage() {
@@ -131,6 +149,8 @@ function AuthProvider({ children }) {
           setUser(data);
           storageUser(data);
           setLoadingAuth(false);
+          // Solicita permissões após login bem-sucedido
+          requestPermissionsAfterLogin();
         }
       })
       .catch((error) => {
@@ -200,6 +220,8 @@ function AuthProvider({ children }) {
         setUser(data);
         storageUser(data);
         setLoadingAuth(false);
+        // Solicita permissões após cadastro bem-sucedido
+        requestPermissionsAfterLogin();
       });
 
     await firestore()
@@ -288,6 +310,8 @@ function AuthProvider({ children }) {
             setUser(data);
             storageUser(data);
             setLoadingAuth(false);
+            // Solicita permissões após cadastro bem-sucedido
+            requestPermissionsAfterLogin();
           });
 
         await firestore()
@@ -400,7 +424,8 @@ function AuthProvider({ children }) {
         setUser(data);
         storageUser(data);
         setLoadingAuth(false);
-        // permissionFineLocation();
+        // Solicita permissões após login bem-sucedido
+        requestPermissionsAfterLogin();
 
         return () => {};
       })
