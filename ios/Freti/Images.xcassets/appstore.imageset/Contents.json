@@ -27,16 +27,7 @@
       "filename" : "icon-iphone-29x29@3x.png",
       "idiom" : "iphone",
       "scale" : "3x"
-    },
-    {
-      "idiom" : "ipad",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "icon-ipad-29x29@2x.png",
-      "idiom" : "ipad",
-      "scale" : "2x"
-    }
+    }    
   ],
   "info" : {
     "author" : "xcode",
