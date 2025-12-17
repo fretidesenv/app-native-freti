@@ -154,7 +154,7 @@ function Profile() {
 
   return (
     <Scroll>
-      <Container>
+      <Container style={{minHeight: 800}}>
         <Header namePage="Perfil" />
 
         <ProfileUserImage />
